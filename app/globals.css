@@ -1,0 +1,362 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --surface: #f7faff;
+  --text: #101b35;
+  --muted: #64748b;
+  --primary: #1263f1;
+  --primary-hover: #0b4dce;
+  --primary-soft: #e8f0fe;
+  --border: #e3eaf4;
+  --success: #16835d;
+  --danger: #c0352b;
+  --radius-card: 1rem;
+  --radius-button: 0.75rem;
+  --shadow-sm: 0 1px 2px rgb(16 27 53 / 0.04);
+  --shadow-md: 0 8px 24px rgb(16 27 53 / 0.08);
+  --container: 75rem;
+  --gradient-brand: linear-gradient(135deg, #1b70ea 0%, #1263f1 42%, #0a348f 100%);
+  --gradient-brand-hover: linear-gradient(135deg, #1564d8 0%, #0b4dce 48%, #08286e 100%);
+  --gradient-heading: linear-gradient(105deg, #101b35 0%, #17367f 48%, #1263f1 100%);
+  --gradient-accent: linear-gradient(105deg, #0b4dce 0%, #1263f1 38%, #3d93ff 100%);
+  --gradient-text: linear-gradient(105deg, #0a3aa6 0%, #1263f1 100%);
+  --gradient-banner: linear-gradient(118deg, #1b70ea 0%, #0d4ccc 44%, #071c62 100%);
+  --gradient-card: linear-gradient(180deg, #ffffff 0%, #f4f8ff 100%);
+  --gradient-card-hover: linear-gradient(
+    145deg,
+    #ffffff 0%,
+    #eaf2ff 42%,
+    #d6e6ff 78%,
+    #c5dbff 100%
+  );
+  --gradient-card-border: linear-gradient(
+    135deg,
+    rgb(61 147 255 / 0.7),
+    rgb(227 234 244) 46%,
+    rgb(18 99 241 / 0.55)
+  );
+  --gradient-soft: linear-gradient(145deg, #ffffff 0%, #d7e6ff 100%);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--text);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-inter);
+  --radius-card: var(--radius-card);
+  --radius-button: var(--radius-button);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --max-width-container: var(--container);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background: var(--background);
+    color: var(--text);
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal-up {
+      animation: reveal-up 0.7s ease-out both;
+    }
+  }
+
+  .text-gradient,
+  .text-gradient-accent,
+  .text-gradient-brand {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient {
+    background-image: var(--gradient-heading);
+  }
+
+  .text-gradient-accent {
+    background-image: var(--gradient-accent);
+  }
+
+  .text-gradient-brand {
+    background-image: var(--gradient-text);
+  }
+
+  .text-gradient::selection,
+  .text-gradient-accent::selection,
+  .text-gradient-brand::selection {
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    background: #1263f1;
+  }
+
+  .text-gradient :where(.text-muted) {
+    background: none;
+    color: var(--muted);
+    -webkit-text-fill-color: var(--muted);
+  }
+
+  .bg-brand-gradient {
+    background-color: #1263f1;
+    background-image: var(--gradient-brand);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.28),
+      0 10px 24px -12px rgb(18 99 241 / 0.75);
+  }
+
+  .bg-banner-gradient {
+    background-color: #0d4ccc;
+    background-image: var(--gradient-banner);
+  }
+
+  .bg-on-light {
+    background-image: none !important;
+    background-color: #fff !important;
+    color: #102048;
+  }
+
+  .bg-on-light:hover {
+    background-image: none !important;
+    background-color: var(--surface) !important;
+    color: #102048;
+  }
+
+  .btn-outline-gradient {
+    position: relative;
+    border-color: transparent;
+    background-color: #fff;
+    background-image: linear-gradient(180deg, #ffffff 0%, #f4f8ff 100%);
+  }
+
+  .btn-outline-gradient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(135deg, #8eb6ff 0%, #1263f1 48%, #7aa8ff 100%);
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .btn-outline-gradient:hover {
+    background-image: linear-gradient(180deg, #ffffff 0%, #e7f0ff 100%);
+  }
+
+  .btn-on-brand,
+  .btn-on-brand:hover {
+    background-image: none !important;
+    color: #fff !important;
+  }
+
+  .btn-on-brand {
+    background-color: transparent !important;
+    border-color: rgb(255 255 255 / 0.8) !important;
+  }
+
+  .btn-on-brand::before {
+    display: none;
+  }
+
+  .btn-on-brand:hover {
+    background-color: rgb(255 255 255 / 0.1) !important;
+  }
+
+  .btn-no-border::before {
+    display: none;
+  }
+
+  .card-gradient {
+    border: 1px solid transparent;
+    background:
+      var(--gradient-card) padding-box,
+      var(--gradient-card-border) border-box;
+  }
+
+  .card-surface {
+    background: var(--gradient-card);
+  }
+
+  .icon-well {
+    background-image: var(--gradient-soft);
+    box-shadow: inset 0 0 0 1px rgb(18 99 241 / 0.14);
+  }
+
+  .section-wash {
+    background-image: linear-gradient(180deg, #f7faff 0%, #eaf2ff 52%, #f7faff 100%);
+  }
+}
+
+/* Outside @layer so Tailwind cannot tree-shake hover/glow rules */
+.card-interactive {
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    background-image 0.25s ease;
+}
+
+.card-interactive:hover,
+.card-interactive:focus-visible {
+  transform: translateY(-4px);
+  box-shadow:
+    0 14px 32px -14px rgb(16 27 53 / 0.2),
+    0 0 0 1px rgb(18 99 241 / 0.12),
+    0 0 40px -8px rgb(18 99 241 / 0.45);
+}
+
+.card-interactive.card-surface:hover,
+.card-interactive.card-surface:focus-visible {
+  background: var(--gradient-card-hover);
+}
+
+.card-interactive.card-gradient:hover,
+.card-interactive.card-gradient:focus-visible {
+  background:
+    var(--gradient-card-hover) padding-box,
+    linear-gradient(
+        135deg,
+        rgb(61 147 255 / 0.9),
+        rgb(18 99 241 / 0.45) 46%,
+        rgb(61 147 255 / 0.85)
+      )
+      border-box;
+}
+
+.card-interactive:hover > .card-gradient,
+.card-interactive:focus-visible > .card-gradient {
+  background:
+    var(--gradient-card-hover) padding-box,
+    linear-gradient(
+        135deg,
+        rgb(61 147 255 / 0.9),
+        rgb(18 99 241 / 0.45) 46%,
+        rgb(61 147 255 / 0.85)
+      )
+      border-box;
+  transition: background 0.25s ease;
+}
+
+.bg-brand-gradient {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-image 0.2s ease;
+}
+
+.bg-brand-gradient:hover {
+  background-image: var(--gradient-brand-hover);
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.28),
+    0 14px 32px -8px rgb(18 99 241 / 0.85),
+    0 0 28px -2px rgb(61 147 255 / 0.55);
+}
+
+.bg-brand-gradient:active {
+  transform: translateY(0);
+}
+
+.bg-on-light:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 28px -10px rgb(18 99 241 / 0.35),
+    0 0 24px -4px rgb(18 99 241 / 0.28) !important;
+}
+
+.btn-outline-gradient {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background-image 0.2s ease;
+}
+
+.btn-outline-gradient:hover,
+.btn-no-border:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 28px -10px rgb(18 99 241 / 0.45),
+    0 0 24px -4px rgb(18 99 241 / 0.4);
+}
+
+.btn-outline-gradient:active,
+.btn-no-border:active {
+  transform: translateY(0);
+}
+
+.btn-on-brand:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 28px -10px rgb(255 255 255 / 0.35),
+    0 0 24px -4px rgb(255 255 255 / 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-interactive,
+  .bg-brand-gradient,
+  .btn-outline-gradient {
+    transition: none;
+  }
+
+  .card-interactive:hover,
+  .card-interactive:focus-visible,
+  .bg-brand-gradient:hover,
+  .bg-on-light:hover,
+  .btn-outline-gradient:hover,
+  .btn-no-border:hover,
+  .btn-on-brand:hover {
+    transform: none;
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
