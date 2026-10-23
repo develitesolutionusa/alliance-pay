@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { CTABanner } from "@/components/marketing/CTABanner";
 import { ResourceCard } from "@/components/marketing/ResourceCard";
 import { Container } from "@/components/ui/Container";
+import { LoadingSkeleton } from "@/components/ui/LoadingSkeleton";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import {
@@ -28,7 +30,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: article.title, description: article.description };
 }
 
-export default async function ResourceArticlePage({ params }: Props) {
+function ResourceArticleFallback() {
+  return (
+    <Container className="max-w-3xl py-10 sm:py-14">
+      <LoadingSkeleton lines={8} className="max-w-2xl" />
+    </Container>
+  );
+}
+
+export default function ResourceArticlePage({ params }: Props) {
+  return (
+    <Suspense fallback={<ResourceArticleFallback />}>
+      <ResourceArticleContent params={params} />
+    </Suspense>
+  );
+}
+
+async function ResourceArticleContent({ params }: Props) {
   const { slug } = await params;
   const article = getResource(slug);
   if (!article) notFound();
@@ -37,7 +55,6 @@ export default async function ResourceArticlePage({ params }: Props) {
 
   return (
     <>
-
       <article>
         <Container className="max-w-3xl py-10 sm:py-14">
           <ScrollReveal variant="up">

@@ -89,8 +89,8 @@ export const products: DetailContent[] = [
     description:
       "Run the store from one back-office workspace — monitor sales, manage inventory, raise purchase orders, and review performance without leaving AlliancePay.",
     image: {
-      src: "/images/home/Modern Restaurant POS Station.png",
-      alt: "Retail back-office POS workstation with sales and inventory tools",
+      src: "/images/products/back-office-hero-premium.jpg",
+      alt: "AlliancePay back-office store dashboard showing sales, low stock, and purchase orders",
     },
     benefits: [
       {

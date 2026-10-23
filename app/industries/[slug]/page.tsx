@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { DetailTemplate } from "@/components/marketing/DetailTemplate";
+import { Container } from "@/components/ui/Container";
+import { LoadingSkeleton } from "@/components/ui/LoadingSkeleton";
 import { getIndustryPage, industryPages } from "@/lib/industry-pages";
 
 type Props = {
@@ -18,7 +21,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: industry.title, description: industry.description };
 }
 
-export default async function IndustryDetailPage({ params }: Props) {
+function IndustryDetailFallback() {
+  return (
+    <Container className="py-16">
+      <LoadingSkeleton lines={6} className="max-w-2xl" />
+    </Container>
+  );
+}
+
+export default function IndustryDetailPage({ params }: Props) {
+  return (
+    <Suspense fallback={<IndustryDetailFallback />}>
+      <IndustryDetailContent params={params} />
+    </Suspense>
+  );
+}
+
+async function IndustryDetailContent({ params }: Props) {
   const { slug } = await params;
   const industry = getIndustryPage(slug);
   if (!industry) notFound();
