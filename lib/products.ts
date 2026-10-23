@@ -169,8 +169,8 @@ export const products: DetailContent[] = [
     description:
       "Give customers a clear view of what is being scanned, discounted, and totaled — building trust at the register and reducing “what was that charge?” moments.",
     image: {
-      src: "/images/home/Modern AlliancePay POS Checkout Scene.png",
-      alt: "Customer-facing view of an AlliancePay checkout scene",
+      src: "/images/products/customer-display-hero-premium.jpg",
+      alt: "AlliancePay customer-facing display showing cart lines and amount due",
     },
     benefits: [
       {

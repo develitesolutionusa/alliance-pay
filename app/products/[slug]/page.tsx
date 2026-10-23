@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { BackOfficeProductPage } from "@/components/marketing/BackOfficeProductPage";
+import { CustomerDisplayProductPage } from "@/components/marketing/CustomerDisplayProductPage";
 import { DetailTemplate } from "@/components/marketing/DetailTemplate";
 import { PosProductPage } from "@/components/marketing/PosProductPage";
 import { Container } from "@/components/ui/Container";
 import { LoadingSkeleton } from "@/components/ui/LoadingSkeleton";
 import { backOfficePage } from "@/lib/back-office-page";
+import { customerDisplayPage } from "@/lib/customer-display-page";
 import { getProduct, products } from "@/lib/products";
 import { posPage } from "@/lib/pos-page";
 
@@ -30,6 +32,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: "Back Office",
       description: backOfficePage.description,
+    };
+  }
+  if (slug === "customer-display") {
+    return {
+      title: "Customer Display",
+      description: customerDisplayPage.description,
     };
   }
   const product = getProduct(slug);
@@ -62,6 +70,10 @@ async function ProductDetailContent({ params }: Props) {
 
   if (slug === "back-office") {
     return <BackOfficeProductPage />;
+  }
+
+  if (slug === "customer-display") {
+    return <CustomerDisplayProductPage />;
   }
 
   const product = getProduct(slug);
