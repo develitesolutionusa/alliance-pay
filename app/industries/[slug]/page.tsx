@@ -1,12 +1,16 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
+import { ConvenienceStoresPage } from "@/components/marketing/ConvenienceStoresPage";
 import { DetailTemplate } from "@/components/marketing/DetailTemplate";
 import { GroceryStoresPage } from "@/components/marketing/GroceryStoresPage";
+import { LiquorStoresPage } from "@/components/marketing/LiquorStoresPage";
 import { Container } from "@/components/ui/Container";
 import { LoadingSkeleton } from "@/components/ui/LoadingSkeleton";
+import { conveniencePage } from "@/lib/convenience-page";
 import { groceryPage } from "@/lib/grocery-page";
 import { getIndustryPage, industryPages } from "@/lib/industry-pages";
+import { liquorPage } from "@/lib/liquor-page";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,6 +26,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: "Grocery Stores",
       description: groceryPage.description,
+    };
+  }
+  if (slug === "convenience-stores") {
+    return {
+      title: "Convenience Stores",
+      description: conveniencePage.description,
+    };
+  }
+  if (slug === "liquor-stores") {
+    return {
+      title: "Liquor Stores",
+      description: liquorPage.description,
     };
   }
   const industry = getIndustryPage(slug);
@@ -50,6 +66,14 @@ async function IndustryDetailContent({ params }: Props) {
 
   if (slug === "grocery-stores") {
     return <GroceryStoresPage />;
+  }
+
+  if (slug === "convenience-stores") {
+    return <ConvenienceStoresPage />;
+  }
+
+  if (slug === "liquor-stores") {
+    return <LiquorStoresPage />;
   }
 
   const industry = getIndustryPage(slug);

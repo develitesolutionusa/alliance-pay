@@ -80,8 +80,8 @@ export const industryPages: DetailContent[] = [
     description:
       "Convenience retail lives on speed. AlliancePay keeps checkout short, inventory current, and staff permissions tight for high-turn SKUs.",
     image: {
-      src: "/images/home/convenience.jpg",
-      alt: "Convenience store shelves and coolers",
+      src: "/images/industries/convenience/hero-premium.jpg",
+      alt: "Bright modern convenience store aisle with snack shelves and beverage coolers",
     },
     benefits: [
       {
@@ -145,8 +145,8 @@ export const industryPages: DetailContent[] = [
     description:
       "Liquor retail needs disciplined checkout and catalog control. AlliancePay supports age-aware selling, bottle-level inventory, and reports owners can trust.",
     image: {
-      src: "/images/home/liquor.jpg",
-      alt: "Bottle shelves in a liquor store",
+      src: "/images/industries/liquor/hero-premium.jpg",
+      alt: "Bright modern liquor store aisle with wine shelves and spirit bottles",
     },
     benefits: [
       {

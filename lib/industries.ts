@@ -24,8 +24,8 @@ export const industries: IndustryItem[] = [
     description: "Fast checkout, fuel-adjacent retail, and everyday essentials.",
     summary: "Fast checkout and inventory for everyday retail.",
     href: "/industries/convenience-stores",
-    image: "/images/home/convenience.jpg",
-    imageHint: "Convenience store shelves and coolers",
+    image: "/images/industries/convenience/hero-premium.jpg",
+    imageHint: "Bright modern convenience store aisle with snack shelves and beverage coolers",
   },
   {
     slug: "liquor-stores",
@@ -33,8 +33,8 @@ export const industries: IndustryItem[] = [
     description: "Age checks, bottle catalog control, and compliance-aware sales.",
     summary: "Age checks, bottle tracking, and compliance-aware sales.",
     href: "/industries/liquor-stores",
-    image: "/images/home/liquor.jpg",
-    imageHint: "Bottle shelves in a liquor store",
+    image: "/images/industries/liquor/hero-premium.jpg",
+    imageHint: "Bright modern liquor store aisle with wine shelves and spirit bottles",
   },
   {
     slug: "smoke-shops",

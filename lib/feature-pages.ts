@@ -140,7 +140,7 @@ export const featurePages: DetailContent[] = [
       "Replace spreadsheet purchasing with purchase orders that connect vendors, expected quantities, receiving, and inventory updates.",
     icon: "clipboardList",
     image: {
-      src: "/images/home/convenience.jpg",
+      src: "/images/industries/convenience/hero-premium.jpg",
       alt: "Convenience store shelves stocked after receiving deliveries",
     },
     benefits: [
