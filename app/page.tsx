@@ -94,16 +94,17 @@ export default function HomePage() {
               Workflows for grocery, convenience, liquor, and smoke shops.
             </p>
           </ScrollReveal>
-          <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
             {industries.map((industry, index) => (
               <ScrollReveal
                 key={industry.slug}
-                variant="up"
-                delay={index * 80}
-                duration={650}
+                variant="scale"
+                delay={index * 120}
+                duration={800}
                 className="h-full"
               >
                 <IndustryCard
+                  variant="flip"
                   title={industry.title}
                   description={industry.summary}
                   href={industry.href}

@@ -7,9 +7,15 @@ type WorkflowTimelineProps = {
   steps: { title: string; description: string }[];
   className?: string;
   onActiveChange?: (index: number) => void;
+  /**
+   * `scroll` — progress follows viewport (default, other product pages).
+   * `autoplay` — guided step cycle when the timeline is in view (Back Office).
+   */
+  mode?: "scroll" | "autoplay";
 };
 
 const RAIL_CLASS = "w-4";
+const AUTOPLAY_MS = 2200;
 
 function subscribeReducedMotion(onStoreChange: () => void) {
   const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -25,12 +31,16 @@ export function WorkflowTimeline({
   steps,
   className,
   onActiveChange,
+  mode = "scroll",
 }: WorkflowTimelineProps) {
+  const rootRef = useRef<HTMLOListElement | null>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
   const activeRef = useRef(0);
   const onActiveChangeRef = useRef(onActiveChange);
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [inView, setInView] = useState(false);
+  const [paused, setPaused] = useState(false);
 
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
@@ -38,19 +48,59 @@ export function WorkflowTimeline({
     () => false,
   );
 
-  const displayIndex = reducedMotion ? Math.max(steps.length - 1, 0) : activeIndex;
-  const displayProgress = reducedMotion ? 1 : progress;
+  const lastIndex = Math.max(steps.length - 1, 0);
+  const displayIndex = reducedMotion ? lastIndex : activeIndex;
+  const displayProgress = reducedMotion
+    ? 1
+    : mode === "autoplay"
+      ? steps.length <= 1
+        ? 1
+        : activeIndex / lastIndex
+      : progress;
 
   useEffect(() => {
     onActiveChangeRef.current = onActiveChange;
   }, [onActiveChange]);
 
   useEffect(() => {
+    if (mode !== "autoplay" || reducedMotion) return;
+
+    const root = rootRef.current;
+    if (!root) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setInView(entry.isIntersecting && entry.intersectionRatio >= 0.35);
+      },
+      { threshold: [0.2, 0.35, 0.5] },
+    );
+
+    observer.observe(root);
+    return () => observer.disconnect();
+  }, [mode, reducedMotion]);
+
+  useEffect(() => {
+    if (mode !== "autoplay" || reducedMotion) return;
+    if (!inView || paused || steps.length === 0) return;
+
+    const id = window.setInterval(() => {
+      const next = (activeRef.current + 1) % steps.length;
+      activeRef.current = next;
+      setActiveIndex(next);
+      onActiveChangeRef.current?.(next);
+    }, AUTOPLAY_MS);
+
+    return () => window.clearInterval(id);
+  }, [mode, reducedMotion, inView, paused, steps.length]);
+
+  useEffect(() => {
     if (reducedMotion) {
-      const last = Math.max(steps.length - 1, 0);
-      onActiveChangeRef.current?.(last);
-      return;
+      onActiveChangeRef.current?.(lastIndex);
     }
+  }, [reducedMotion, lastIndex]);
+
+  useEffect(() => {
+    if (mode !== "scroll" || reducedMotion) return;
 
     const update = () => {
       const items = itemRefs.current.filter(Boolean) as HTMLLIElement[];
@@ -92,10 +142,25 @@ export function WorkflowTimeline({
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };
-  }, [steps.length, reducedMotion]);
+  }, [mode, steps.length, reducedMotion, lastIndex]);
 
   return (
-    <ol className={cn("relative", className)}>
+    <ol
+      ref={rootRef}
+      className={cn("relative", className)}
+      onMouseEnter={mode === "autoplay" ? () => setPaused(true) : undefined}
+      onMouseLeave={mode === "autoplay" ? () => setPaused(false) : undefined}
+      onFocusCapture={mode === "autoplay" ? () => setPaused(true) : undefined}
+      onBlurCapture={
+        mode === "autoplay"
+          ? (event) => {
+              if (!event.currentTarget.contains(event.relatedTarget as Node)) {
+                setPaused(false);
+              }
+            }
+          : undefined
+      }
+    >
       <div
         className={cn(
           "pointer-events-none absolute top-3.5 bottom-3.5 left-0",
@@ -105,7 +170,12 @@ export function WorkflowTimeline({
       >
         <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 overflow-hidden bg-border">
           <div
-            className="w-full bg-primary transition-[height] duration-150 ease-out"
+            className={cn(
+              "w-full bg-primary ease-out",
+              mode === "autoplay"
+                ? "transition-[height] duration-700"
+                : "transition-[height] duration-150",
+            )}
             style={{ height: `${displayProgress * 100}%` }}
           />
         </div>
@@ -114,6 +184,7 @@ export function WorkflowTimeline({
       {steps.map((step, index) => {
         const isActive = index <= displayIndex;
         const isCurrent = index === displayIndex;
+        const isUpcoming = index > displayIndex;
         return (
           <li
             key={step.title}
@@ -122,8 +193,10 @@ export function WorkflowTimeline({
             }}
             className={cn(
               "relative grid grid-cols-[1rem_minmax(0,1fr)] gap-5 pb-12 last:pb-0 sm:gap-7 sm:pb-16",
-              "transition-opacity duration-300",
-              isActive ? "opacity-100" : "opacity-50",
+              "transition-[opacity,transform] duration-500 ease-out",
+              isActive ? "opacity-100" : "opacity-40",
+              mode === "autoplay" && isCurrent && "translate-x-0",
+              mode === "autoplay" && isUpcoming && "translate-x-1",
             )}
           >
             <span
@@ -135,15 +208,25 @@ export function WorkflowTimeline({
             >
               <span
                 className={cn(
-                  "block h-2.5 w-2.5 shrink-0 rounded-full border-2 transition-colors duration-300",
+                  "block h-2.5 w-2.5 shrink-0 rounded-full border-2 transition-all duration-500",
                   isCurrent || isActive
                     ? "border-primary bg-primary"
                     : "border-border bg-background",
-                  isCurrent && "ring-4 ring-primary/15",
+                  isCurrent && "scale-110 ring-4 ring-primary/20",
+                  mode === "autoplay" &&
+                    isCurrent &&
+                    !reducedMotion &&
+                    "motion-safe:animate-[workflow-pulse_2.2s_ease-in-out_infinite]",
                 )}
               />
             </span>
-            <div>
+            <div
+              className={cn(
+                "transition-[opacity,transform] duration-500 ease-out",
+                mode === "autoplay" && isCurrent && "translate-y-0 opacity-100",
+                mode === "autoplay" && !isCurrent && isUpcoming && "opacity-40",
+              )}
+            >
               <p
                 className={cn(
                   "text-xs font-bold uppercase tracking-[0.14em] transition-colors duration-300",

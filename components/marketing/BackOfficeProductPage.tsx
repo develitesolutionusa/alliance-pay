@@ -148,7 +148,10 @@ export function BackOfficeProductPage() {
                 <PrimaryButton href="/book-demo">Book a Demo</PrimaryButton>
               </div>
             </div>
-            <WorkflowTimeline steps={[...backOfficePage.workflow]} />
+            <WorkflowTimeline
+              mode="autoplay"
+              steps={[...backOfficePage.workflow]}
+            />
           </div>
         </Container>
       </section>
