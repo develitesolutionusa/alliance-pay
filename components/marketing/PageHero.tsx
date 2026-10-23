@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/Container";
 import { PrimaryButton } from "@/components/ui/PrimaryButton";
 import { SecondaryButton } from "@/components/ui/SecondaryButton";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 type PageHeroProps = {
@@ -32,31 +33,43 @@ export function PageHero({
       <Container>
         <div className="max-w-3xl">
           {eyebrow ? (
-            <p className="text-gradient-brand mb-3 text-sm font-semibold tracking-wide">
-              {eyebrow}
-            </p>
+            <ScrollReveal variant="up" delay={40}>
+              <p className="text-gradient-brand mb-3 text-sm font-semibold tracking-wide">
+                {eyebrow}
+              </p>
+            </ScrollReveal>
           ) : null}
-          <h1 className="text-gradient text-4xl font-bold tracking-tight sm:text-5xl">
-            {title}
-          </h1>
+          <ScrollReveal variant="up" delay={100}>
+            <h1 className="text-gradient text-4xl font-bold tracking-tight sm:text-5xl">
+              {title}
+            </h1>
+          </ScrollReveal>
           {description ? (
-            <p className="mt-5 text-lg leading-8 text-muted">{description}</p>
+            <ScrollReveal variant="up" delay={180}>
+              <p className="mt-5 text-lg leading-8 text-muted">{description}</p>
+            </ScrollReveal>
           ) : null}
           {(primaryCta || secondaryCta) && (
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              {primaryCta ? (
-                <PrimaryButton href={primaryCta.href}>
-                  {primaryCta.label}
-                </PrimaryButton>
-              ) : null}
-              {secondaryCta ? (
-                <SecondaryButton href={secondaryCta.href}>
-                  {secondaryCta.label}
-                </SecondaryButton>
-              ) : null}
-            </div>
+            <ScrollReveal variant="up" delay={260}>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                {primaryCta ? (
+                  <PrimaryButton href={primaryCta.href}>
+                    {primaryCta.label}
+                  </PrimaryButton>
+                ) : null}
+                {secondaryCta ? (
+                  <SecondaryButton href={secondaryCta.href}>
+                    {secondaryCta.label}
+                  </SecondaryButton>
+                ) : null}
+              </div>
+            </ScrollReveal>
           )}
-          {children}
+          {children ? (
+            <ScrollReveal variant="up" delay={320} className="mt-8">
+              {children}
+            </ScrollReveal>
+          ) : null}
         </div>
       </Container>
     </section>

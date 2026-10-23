@@ -1,35 +1,40 @@
 import type { Metadata } from "next";
-import { EmptyState } from "@/components/ui/EmptyState";
 import { PageHero } from "@/components/marketing/PageHero";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { ResourceCard } from "@/components/marketing/ResourceCard";
+import { CTABanner } from "@/components/marketing/CTABanner";
 import { Container } from "@/components/ui/Container";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { resources } from "@/lib/resources";
 
 export const metadata: Metadata = {
   title: "Resources",
-  description: "Guides and articles for independent retailers using AlliancePay.",
+  description:
+    "Guides and articles for independent retailers evaluating AlliancePay.",
 };
 
 export default function ResourcesPage() {
   return (
     <>
-      <Container className="pt-6">
-        <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "Resources" }]}
-        />
-      </Container>
       <PageHero
         eyebrow="Resources"
         title="Guides for independent retailers"
-        description="Articles and how-tos will appear here as AlliancePay publishes original content."
+        description="Original AlliancePay articles on cutovers, inventory habits, and age-restricted sales — no fabricated customer stories."
+        primaryCta={{ label: "Browse FAQ", href: "/faq" }}
+        secondaryCta={{ label: "Book a Demo", href: "/book-demo" }}
       />
-      <Container className="py-12">
-        <EmptyState
-          title="No articles yet"
-          description="The resources index is ready. Add approved guides in Phase 3."
-          actionLabel="Read FAQ"
-          actionHref="/faq"
-        />
+      <Container className="grid gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3">
+        {resources.map((article, index) => (
+          <ScrollReveal
+            key={article.slug}
+            variant="up"
+            delay={index * 80}
+            duration={650}
+          >
+            <ResourceCard article={article} />
+          </ScrollReveal>
+        ))}
       </Container>
+      <CTABanner />
     </>
   );
 }

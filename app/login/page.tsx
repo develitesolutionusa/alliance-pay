@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/marketing/PageHero";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/ui/Container";
 import { PrimaryButton } from "@/components/ui/PrimaryButton";
 import { SecondaryButton } from "@/components/ui/SecondaryButton";
@@ -13,11 +12,6 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   return (
     <>
-      <Container className="pt-6">
-        <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "Login" }]}
-        />
-      </Container>
       <PageHero
         eyebrow="Account"
         title="Merchant login coming soon"

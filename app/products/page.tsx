@@ -1,42 +1,43 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { PageHero } from "@/components/marketing/PageHero";
+import { ProductCard } from "@/components/marketing/ProductCard";
 import { CTABanner } from "@/components/marketing/CTABanner";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/ui/Container";
-import { productRoutes } from "@/lib/routes";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { products } from "@/lib/products";
 
 export const metadata: Metadata = {
   title: "Products",
-  description: "AlliancePay POS products for checkout, back office, hardware, and multi-location retail.",
+  description:
+    "AlliancePay POS products for checkout, back office, hardware, and multi-location retail.",
 };
 
 export default function ProductsPage() {
   return (
     <>
-      <Container className="pt-6">
-        <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "Products" }]}
-        />
-      </Container>
       <PageHero
         eyebrow="Products"
         title="Retail tools that work together"
         description="Explore AlliancePay products for the counter, back office, customer display, hardware, and multi-store operations."
         primaryCta={{ label: "Book a Demo", href: "/book-demo" }}
+        secondaryCta={{ label: "Explore Features", href: "/features" }}
       />
-      <Container className="grid gap-4 py-12 sm:grid-cols-2">
-        {productRoutes.map((product) => (
-          <Link
+      <Container className="grid gap-6 py-12 sm:grid-cols-2">
+        {products.map((product, index) => (
+          <ScrollReveal
             key={product.slug}
-            href={`/products/${product.slug}`}
-            className="rounded-[var(--radius-card)] border border-border bg-white p-6 shadow-sm transition-shadow hover:shadow-md"
+            variant="up"
+            delay={index * 70}
+            duration={650}
           >
-            <h2 className="text-lg font-semibold text-foreground">
-              {product.title}
-            </h2>
-            <p className="mt-2 text-sm text-muted">{product.description}</p>
-          </Link>
+            <ProductCard
+              title={product.title}
+              description={product.summary}
+              href={`/products/${product.slug}`}
+              imageSrc={product.image?.src}
+              imageAlt={product.image?.alt}
+            />
+          </ScrollReveal>
         ))}
       </Container>
       <CTABanner />

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { IndustryCard } from "@/components/marketing/IndustryCard";
 import { PageHero } from "@/components/marketing/PageHero";
 import { CTABanner } from "@/components/marketing/CTABanner";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/ui/Container";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { industries } from "@/lib/industries";
 
 export const metadata: Metadata = {
@@ -14,11 +14,6 @@ export const metadata: Metadata = {
 export default function IndustriesPage() {
   return (
     <>
-      <Container className="pt-6">
-        <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "Industries" }]}
-        />
-      </Container>
       <PageHero
         eyebrow="Industries"
         title="Solutions for every retail industry"
@@ -26,15 +21,21 @@ export default function IndustriesPage() {
         primaryCta={{ label: "Book a Demo", href: "/book-demo" }}
       />
       <Container className="grid gap-6 py-12 sm:grid-cols-2 lg:grid-cols-4">
-        {industries.map((industry) => (
-          <IndustryCard
+        {industries.map((industry, index) => (
+          <ScrollReveal
             key={industry.slug}
-            title={industry.title}
-            description={industry.description}
-            href={industry.href}
-            imageSrc={industry.image}
-            imageHint={industry.imageHint}
-          />
+            variant="up"
+            delay={index * 80}
+            duration={650}
+          >
+            <IndustryCard
+              title={industry.title}
+              description={industry.description}
+              href={industry.href}
+              imageSrc={industry.image}
+              imageHint={industry.imageHint}
+            />
+          </ScrollReveal>
         ))}
       </Container>
       <CTABanner />

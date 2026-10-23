@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import { LegalNotice } from "@/components/marketing/LegalNotice";
 import { PageHero } from "@/components/marketing/PageHero";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
@@ -11,24 +11,20 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <Container className="pt-6">
-        <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "Privacy" }]}
-        />
-      </Container>
       <PageHero
         eyebrow="Legal"
         title="Privacy Policy"
-        description="This page is a placeholder. Final privacy commitments will be published after legal review — AlliancePay will not fabricate legal terms."
+        description="Placeholder only. Final privacy commitments publish after legal review — AlliancePay will not fabricate legal terms."
       />
-      <Container className="prose-sm max-w-3xl py-12 text-muted">
-        <p>
-          Until counsel-reviewed content is available, contact{" "}
-          <a className="text-primary" href="mailto:hello@alliancepay.com">
-            hello@alliancepay.com
-          </a>{" "}
-          with privacy questions.
-        </p>
+      <Container className="max-w-3xl py-12">
+        <LegalNotice
+          title="What this page means today"
+          paragraphs={[
+            "This notice reserves space for counsel-reviewed privacy commitments covering website visitors, demo requests, and future authenticated product data.",
+            "Until that content ships, treat any personal information you send via contact or demo forms as lead-capture correspondence handled by the AlliancePay team.",
+            "Do not interpret this page as a complete privacy policy, DPA, or processing schedule.",
+          ]}
+        />
       </Container>
     </>
   );

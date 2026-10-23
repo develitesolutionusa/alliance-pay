@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { PageHero } from "@/components/marketing/PageHero";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/ui/Container";
 import { SecondaryButton } from "@/components/ui/SecondaryButton";
 
@@ -13,11 +12,6 @@ export const metadata: Metadata = {
 export default function GetStartedPage() {
   return (
     <>
-      <Container className="pt-6">
-        <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "Get Started" }]}
-        />
-      </Container>
       <PageHero
         eyebrow="Get started"
         title="Start your AlliancePay trial journey"

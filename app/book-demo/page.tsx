@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { PageHero } from "@/components/marketing/PageHero";
-import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { Container } from "@/components/ui/Container";
 
 export const metadata: Metadata = {
@@ -12,11 +11,6 @@ export const metadata: Metadata = {
 export default function BookDemoPage() {
   return (
     <>
-      <Container className="pt-6">
-        <Breadcrumbs
-          items={[{ label: "Home", href: "/" }, { label: "Book a Demo" }]}
-        />
-      </Container>
       <PageHero
         eyebrow="Demo"
         title="See AlliancePay for your store"

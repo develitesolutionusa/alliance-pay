@@ -1,3 +1,4 @@
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { cn } from "@/lib/utils";
 
 type SectionHeadingProps = {
@@ -20,7 +21,8 @@ export function SectionHeading({
   titleClassName,
 }: SectionHeadingProps) {
   return (
-    <div
+    <ScrollReveal
+      variant="up"
       className={cn(
         "max-w-2xl",
         align === "center" && "mx-auto text-center",
@@ -46,6 +48,6 @@ export function SectionHeading({
           {description}
         </p>
       ) : null}
-    </div>
+    </ScrollReveal>
   );
 }

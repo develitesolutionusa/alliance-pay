@@ -22,6 +22,8 @@ npm run test:unit
 - `AGENTS.md` — product & agent specification
 - `PHASE0_AUDIT.md` — repository audit
 - `PHASE1_DELIVERY.md` — foundation milestone notes
+- `PHASE2_DELIVERY.md` — homepage milestone notes
+- `PHASE3_DELIVERY.md` — inner pages milestone notes
 
 ## Notes
 

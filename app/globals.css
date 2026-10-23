@@ -96,6 +96,43 @@
     }
   }
 
+  /* Scroll-triggered reveals (hydrated via ScrollReveal) */
+  .scroll-reveal {
+    --sr-delay: 0ms;
+    --sr-duration: 700ms;
+  }
+
+  .scroll-reveal.is-ready:not(.is-visible) {
+    opacity: 0;
+  }
+
+  .scroll-reveal.is-ready.sr-up:not(.is-visible) {
+    transform: translateY(1.25rem);
+  }
+
+  .scroll-reveal.is-ready.sr-left:not(.is-visible) {
+    transform: translateX(-1.25rem);
+  }
+
+  .scroll-reveal.is-ready.sr-right:not(.is-visible) {
+    transform: translateX(1.25rem);
+  }
+
+  .scroll-reveal.is-ready.sr-scale:not(.is-visible) {
+    transform: scale(0.97);
+  }
+
+  .scroll-reveal.is-ready {
+    transition:
+      opacity var(--sr-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--sr-delay),
+      transform var(--sr-duration) cubic-bezier(0.22, 1, 0.36, 1) var(--sr-delay);
+  }
+
+  .scroll-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
   .text-gradient,
   .text-gradient-accent,
   .text-gradient-brand {
@@ -347,6 +384,14 @@
   .btn-no-border:hover,
   .btn-on-brand:hover {
     transform: none;
+  }
+
+  .scroll-reveal,
+  .scroll-reveal.is-ready,
+  .scroll-reveal.is-ready:not(.is-visible) {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }
 

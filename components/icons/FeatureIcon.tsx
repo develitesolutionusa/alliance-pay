@@ -6,7 +6,10 @@ import {
   Heart,
   Headset,
   Package,
+  Percent,
   Puzzle,
+  Receipt,
+  RotateCcw,
   ScanBarcode,
   Sparkles,
   Store,
@@ -27,6 +30,9 @@ const icons = {
   store: Store,
   sparkles: Sparkles,
   headset: Headset,
+  percent: Percent,
+  receipt: Receipt,
+  rotateCcw: RotateCcw,
 } as const;
 
 export type IconName = keyof typeof icons;
