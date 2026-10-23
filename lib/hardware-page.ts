@@ -9,7 +9,7 @@ export const hardwarePage = {
   description:
     "Terminals, scanners, printers, cash drawers, scales, and certified payment devices — planned for the lane, verified before we claim specific models.",
   heroImage: {
-    src: "/images/products/hardware-hero-premium.jpg",
+    src: "/images/products/hardware-hero-v2.jpg",
     alt: "AlliancePay POS terminal, receipt printer, and barcode scanner on a grocery counter",
   },
   devices: [

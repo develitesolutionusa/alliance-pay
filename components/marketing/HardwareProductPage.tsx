@@ -82,8 +82,9 @@ export function HardwareProductPage() {
                       alt={hardwarePage.heroImage.alt}
                       fill
                       priority
+                      unoptimized
                       sizes="(max-width: 1024px) 100vw, 52vw"
-                      className="object-cover object-[55%_45%]"
+                      className="object-cover object-center"
                     />
                   </div>
                 </div>
