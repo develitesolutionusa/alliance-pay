@@ -1,8 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { FormField, inputClassName } from "@/components/forms/FormField";
 import { PrimaryButton } from "@/components/ui/PrimaryButton";
+import {
+  fieldErrorsFromZod,
+  leadPayloadSchema,
+  type LeadFieldErrors,
+  type LeadIntent,
+} from "@/lib/leads/schema";
 import { cn } from "@/lib/utils";
 
 export type LeadFormValues = {
@@ -10,85 +16,131 @@ export type LeadFormValues = {
   email: string;
   company: string;
   message: string;
+  website: string;
 };
 
 type LeadFormProps = {
+  intent: LeadIntent;
   submitLabel?: string;
   className?: string;
-  /** Until Phase 4 delivery is wired, submissions stay local and show honest feedback. */
-  onSubmit?: (values: LeadFormValues) => Promise<void> | void;
 };
 
-function validate(values: LeadFormValues) {
-  const errors: Partial<Record<keyof LeadFormValues, string>> = {};
-  if (!values.name.trim()) errors.name = "Name is required.";
-  if (!values.email.trim()) errors.email = "Email is required.";
-  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
-    errors.email = "Enter a valid email address.";
-  }
-  if (!values.message.trim()) errors.message = "Please add a short message.";
-  return errors;
-}
+type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export function LeadForm({
+  intent,
   submitLabel = "Send message",
   className,
-  onSubmit,
 }: LeadFormProps) {
+  const formId = useId();
   const [values, setValues] = useState<LeadFormValues>({
     name: "",
     email: "",
     company: "",
     message: "",
+    website: "",
   });
-  const [errors, setErrors] = useState<Partial<Record<keyof LeadFormValues, string>>>(
-    {},
-  );
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "pending">(
-    "idle",
-  );
+  const [errors, setErrors] = useState<LeadFieldErrors>({});
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const nextErrors = validate(values);
-    setErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) return;
+    setStatusMessage(null);
 
-    setStatus("submitting");
-    try {
-      if (onSubmit) {
-        await onSubmit(values);
-        setStatus("success");
-      } else {
-        setStatus("pending");
-      }
-      setValues({ name: "", email: "", company: "", message: "" });
-    } catch {
+    const parsed = leadPayloadSchema.safeParse({
+      intent,
+      ...values,
+    });
+
+    if (!parsed.success) {
+      setErrors(fieldErrorsFromZod(parsed.error));
       setStatus("idle");
-      setErrors({ message: "Something went wrong. Please try again." });
+      return;
+    }
+
+    setErrors({});
+    setStatus("submitting");
+
+    try {
+      const response = await fetch("/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(parsed.data),
+      });
+
+      const data = (await response.json().catch(() => null)) as {
+        ok?: boolean;
+        error?: string;
+        fieldErrors?: LeadFieldErrors;
+        supportEmail?: string;
+      } | null;
+
+      if (response.status === 429) {
+        setStatus("error");
+        setStatusMessage(
+          data?.error ??
+            "Too many requests. Please wait a few minutes and try again.",
+        );
+        return;
+      }
+
+      if (!response.ok || !data?.ok) {
+        if (data?.fieldErrors) setErrors(data.fieldErrors);
+        setStatus("error");
+        setStatusMessage(
+          data?.error ??
+            "Something went wrong. Please try again or email us directly.",
+        );
+        return;
+      }
+
+      setValues({
+        name: "",
+        email: "",
+        company: "",
+        message: "",
+        website: "",
+      });
+      setStatus("success");
+      setStatusMessage("Thanks — your message was sent. We will follow up soon.");
+    } catch {
+      setStatus("error");
+      setStatusMessage(
+        "Network error. Check your connection and try again, or email hello@alliancepay.com.",
+      );
     }
   }
+
+  const statusId = `${formId}-status`;
 
   return (
     <form
       onSubmit={handleSubmit}
-      className={cn("space-y-4", className)}
+      className={cn("relative space-y-4", className)}
       noValidate
+      aria-describedby={statusMessage ? statusId : undefined}
     >
-      <FormField id="lead-name" label="Full name" required error={errors.name}>
+      <FormField id={`${formId}-name`} label="Full name" required error={errors.name}>
         <input
-          id="lead-name"
+          id={`${formId}-name`}
           name="name"
           autoComplete="name"
           className={inputClassName}
           value={values.name}
           onChange={(e) => setValues((v) => ({ ...v, name: e.target.value }))}
           aria-invalid={Boolean(errors.name)}
+          disabled={status === "submitting"}
         />
       </FormField>
-      <FormField id="lead-email" label="Work email" required error={errors.email}>
+      <FormField
+        id={`${formId}-email`}
+        label="Work email"
+        required
+        error={errors.email}
+      >
         <input
-          id="lead-email"
+          id={`${formId}-email`}
           name="email"
           type="email"
           autoComplete="email"
@@ -96,43 +148,84 @@ export function LeadForm({
           value={values.email}
           onChange={(e) => setValues((v) => ({ ...v, email: e.target.value }))}
           aria-invalid={Boolean(errors.email)}
+          disabled={status === "submitting"}
         />
       </FormField>
-      <FormField id="lead-company" label="Store or company" error={errors.company}>
+      <FormField
+        id={`${formId}-company`}
+        label="Store or company"
+        error={errors.company}
+      >
         <input
-          id="lead-company"
+          id={`${formId}-company`}
           name="company"
           autoComplete="organization"
           className={inputClassName}
           value={values.company}
-          onChange={(e) => setValues((v) => ({ ...v, company: e.target.value }))}
+          onChange={(e) =>
+            setValues((v) => ({ ...v, company: e.target.value }))
+          }
+          disabled={status === "submitting"}
         />
       </FormField>
-      <FormField id="lead-message" label="How can we help?" required error={errors.message}>
+      <FormField
+        id={`${formId}-message`}
+        label="How can we help?"
+        required
+        error={errors.message}
+      >
         <textarea
-          id="lead-message"
+          id={`${formId}-message`}
           name="message"
           rows={4}
           className={cn(inputClassName, "resize-y")}
           value={values.message}
-          onChange={(e) => setValues((v) => ({ ...v, message: e.target.value }))}
+          onChange={(e) =>
+            setValues((v) => ({ ...v, message: e.target.value }))
+          }
           aria-invalid={Boolean(errors.message)}
+          disabled={status === "submitting"}
         />
       </FormField>
 
-      <PrimaryButton type="submit" disabled={status === "submitting"} className="w-full sm:w-auto">
+      {/* Honeypot — visually hidden from people, left for bots. */}
+      <div
+        className="absolute -left-[9999px] h-0 w-0 overflow-hidden"
+        aria-hidden="true"
+      >
+        <label htmlFor={`${formId}-website`}>Website</label>
+        <input
+          id={`${formId}-website`}
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={values.website}
+          onChange={(e) =>
+            setValues((v) => ({ ...v, website: e.target.value }))
+          }
+        />
+      </div>
+
+      <PrimaryButton
+        type="submit"
+        disabled={status === "submitting"}
+        className="w-full sm:w-auto"
+      >
         {status === "submitting" ? "Sending…" : submitLabel}
       </PrimaryButton>
 
-      {status === "success" ? (
-        <p className="text-sm text-success" role="status">
-          Thanks — your message was sent.
-        </p>
-      ) : null}
-      {status === "pending" ? (
-        <p className="text-sm text-muted" role="status">
-          Form delivery is not connected yet. Your details were validated locally;
-          email/CRM delivery lands in Phase 4.
+      {statusMessage ? (
+        <p
+          id={statusId}
+          className={cn(
+            "text-sm",
+            status === "success" ? "text-success" : "text-danger",
+          )}
+          role="status"
+          aria-live="polite"
+        >
+          {statusMessage}
         </p>
       ) : null}
     </form>

@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Analytics } from "@/components/consent/Analytics";
+import { CookieConsent } from "@/components/consent/CookieConsent";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { siteConfig } from "@/lib/site";
@@ -40,6 +42,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader />
         <main className="min-w-0 flex-1">{children}</main>
         <SiteFooter />
+        <CookieConsent />
+        <Analytics />
       </body>
     </html>
   );

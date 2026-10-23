@@ -24,7 +24,12 @@ npm run test:unit
 - `PHASE1_DELIVERY.md` — foundation milestone notes
 - `PHASE2_DELIVERY.md` — homepage milestone notes
 - `PHASE3_DELIVERY.md` — inner pages milestone notes
+- `PHASE4_DELIVERY.md` — conversion flows (forms, consent)
+
+## Environment
+
+Copy `.env.example` to `.env.local`. Lead forms deliver via Resend and/or a webhook when those variables are set. Optional analytics (`NEXT_PUBLIC_GA_MEASUREMENT_ID`) shows a consent banner and loads only after accept.
 
 ## Notes
 
-Pricing amounts, partner logos, and legal commitments stay unpublished until approved. Form delivery and authentication are planned for later phases.
+Pricing amounts, partner logos, and legal commitments stay unpublished until approved. Merchant login / self-serve auth remain pending until a POS auth milestone.

@@ -30,7 +30,7 @@ export default function GetStartedPage() {
             Prefer a demo?
           </SecondaryButton>
         </div>
-        <LeadForm submitLabel="Request trial access" />
+        <LeadForm intent="trial" submitLabel="Request trial access" />
       </Container>
     </>
   );

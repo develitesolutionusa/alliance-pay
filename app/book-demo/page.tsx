@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { PageHero } from "@/components/marketing/PageHero";
 import { Container } from "@/components/ui/Container";
+import { siteConfig } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Book a Demo",
@@ -14,10 +15,10 @@ export default function BookDemoPage() {
       <PageHero
         eyebrow="Demo"
         title="See AlliancePay for your store"
-        description="Tell us about your retail operation. Form validation works now; secure delivery and anti-spam land in Phase 4."
+        description={`Tell us about your retail operation. We review every request and follow up from ${siteConfig.supportEmail}.`}
       />
       <Container className="max-w-xl py-12">
-        <LeadForm submitLabel="Request demo" />
+        <LeadForm intent="demo" submitLabel="Request demo" />
       </Container>
     </>
   );

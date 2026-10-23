@@ -5,12 +5,14 @@ import { BackOfficeProductPage } from "@/components/marketing/BackOfficeProductP
 import { CustomerDisplayProductPage } from "@/components/marketing/CustomerDisplayProductPage";
 import { DetailTemplate } from "@/components/marketing/DetailTemplate";
 import { HardwareProductPage } from "@/components/marketing/HardwareProductPage";
+import { MultiLocationProductPage } from "@/components/marketing/MultiLocationProductPage";
 import { PosProductPage } from "@/components/marketing/PosProductPage";
 import { Container } from "@/components/ui/Container";
 import { LoadingSkeleton } from "@/components/ui/LoadingSkeleton";
 import { backOfficePage } from "@/lib/back-office-page";
 import { customerDisplayPage } from "@/lib/customer-display-page";
 import { hardwarePage } from "@/lib/hardware-page";
+import { multiLocationPage } from "@/lib/multi-location-page";
 import { getProduct, products } from "@/lib/products";
 import { posPage } from "@/lib/pos-page";
 
@@ -46,6 +48,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: "Hardware",
       description: hardwarePage.description,
+    };
+  }
+  if (slug === "multi-location") {
+    return {
+      title: "Multi-Location",
+      description: multiLocationPage.description,
     };
   }
   const product = getProduct(slug);
@@ -86,6 +94,10 @@ async function ProductDetailContent({ params }: Props) {
 
   if (slug === "hardware") {
     return <HardwareProductPage />;
+  }
+
+  if (slug === "multi-location") {
+    return <MultiLocationProductPage />;
   }
 
   const product = getProduct(slug);

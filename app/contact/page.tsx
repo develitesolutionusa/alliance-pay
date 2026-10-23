@@ -15,10 +15,10 @@ export default function ContactPage() {
       <PageHero
         eyebrow="Contact"
         title="Talk with AlliancePay"
-        description={`Email ${siteConfig.supportEmail} or send a message below. Delivery to email/CRM is planned for Phase 4.`}
+        description={`Email ${siteConfig.supportEmail} or send a message below. Submissions are validated, rate-limited, and delivered securely when email or CRM delivery is configured.`}
       />
       <Container className="max-w-xl py-12">
-        <LeadForm submitLabel="Send inquiry" />
+        <LeadForm intent="contact" submitLabel="Send inquiry" />
       </Container>
     </>
   );

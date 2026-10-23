@@ -321,8 +321,8 @@ export const products: DetailContent[] = [
     description:
       "Operate more than one store without losing local control. Switch locations, compare performance, transfer stock, and keep settings scoped to each store.",
     image: {
-      src: "/images/home/owner.jpg",
-      alt: "Retail owner reviewing multi-store performance",
+      src: "/images/products/multi-location-hero-premium.jpg",
+      alt: "AlliancePay locations dashboard comparing sample stores",
     },
     benefits: [
       {

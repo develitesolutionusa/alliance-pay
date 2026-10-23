@@ -24,7 +24,7 @@ export const siteFaqs: FAQItem[] = [
   {
     question: "Do demo and contact forms email you today?",
     answer:
-      "Forms validate on the client now. Secure email or CRM delivery, rate limiting, and anti-spam land in a later conversion phase. Submissions show an honest pending state until then.",
+      "Yes when delivery is configured. Forms validate on the client and server, use honeypot and rate-limit abuse controls, and send via email (Resend) and/or a CRM webhook. If delivery is not configured in production, the form asks you to email hello@alliancepay.com instead.",
   },
   {
     question: "Which payment methods do you support?",
@@ -54,7 +54,7 @@ export const siteFaqs: FAQItem[] = [
   {
     question: "How do legal and cookie pages work today?",
     answer:
-      "Privacy, terms, and cookies pages are honest placeholders pending counsel review. AlliancePay will not fabricate legal commitments.",
+      "Privacy and terms remain placeholders pending counsel review. The cookie notice explains essential storage versus optional analytics. Analytics scripts load only after consent, and only when a measurement ID is configured.",
   },
   {
     question: "How do I talk to someone?",

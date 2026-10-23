@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { cn } from "@/lib/utils";
 
 type WorkflowTimelineProps = {
@@ -10,6 +10,16 @@ type WorkflowTimelineProps = {
 };
 
 const RAIL_CLASS = "w-4";
+
+function subscribeReducedMotion(onStoreChange: () => void) {
+  const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+  media.addEventListener("change", onStoreChange);
+  return () => media.removeEventListener("change", onStoreChange);
+}
+
+function getReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
 
 export function WorkflowTimeline({
   steps,
@@ -22,17 +32,22 @@ export function WorkflowTimeline({
   const [activeIndex, setActiveIndex] = useState(0);
   const [progress, setProgress] = useState(0);
 
+  const reducedMotion = useSyncExternalStore(
+    subscribeReducedMotion,
+    getReducedMotion,
+    () => false,
+  );
+
+  const displayIndex = reducedMotion ? Math.max(steps.length - 1, 0) : activeIndex;
+  const displayProgress = reducedMotion ? 1 : progress;
+
   useEffect(() => {
     onActiveChangeRef.current = onActiveChange;
   }, [onActiveChange]);
 
   useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      const last = steps.length - 1;
-      activeRef.current = last;
-      setActiveIndex(last);
-      setProgress(1);
+    if (reducedMotion) {
+      const last = Math.max(steps.length - 1, 0);
       onActiveChangeRef.current?.(last);
       return;
     }
@@ -70,14 +85,14 @@ export function WorkflowTimeline({
       setProgress(Math.min(1, Math.max(0, raw)));
     };
 
-    update();
     window.addEventListener("scroll", update, { passive: true });
     window.addEventListener("resize", update);
+    queueMicrotask(update);
     return () => {
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };
-  }, [steps.length]);
+  }, [steps.length, reducedMotion]);
 
   return (
     <ol className={cn("relative", className)}>
@@ -91,14 +106,14 @@ export function WorkflowTimeline({
         <div className="absolute inset-y-0 left-1/2 w-px -translate-x-1/2 overflow-hidden bg-border">
           <div
             className="w-full bg-primary transition-[height] duration-150 ease-out"
-            style={{ height: `${progress * 100}%` }}
+            style={{ height: `${displayProgress * 100}%` }}
           />
         </div>
       </div>
 
       {steps.map((step, index) => {
-        const isActive = index <= activeIndex;
-        const isCurrent = index === activeIndex;
+        const isActive = index <= displayIndex;
+        const isCurrent = index === displayIndex;
         return (
           <li
             key={step.title}
