@@ -244,8 +244,8 @@ export const products: DetailContent[] = [
     description:
       "AlliancePay is designed for real retail counters. Use compatible terminals, barcode scanners, receipt printers, cash drawers, scales, and certified payment devices — with compatibility details verified before we claim specific models.",
     image: {
-      src: "/images/home/Modern Grocery Checkout with AlliancePay.png",
-      alt: "Grocery checkout lane with POS hardware and scanner",
+      src: "/images/products/hardware-hero-premium.jpg",
+      alt: "AlliancePay POS terminal, receipt printer, and barcode scanner on a grocery counter",
     },
     benefits: [
       {

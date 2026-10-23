@@ -7,9 +7,11 @@ import {
   Headset,
   Package,
   Percent,
+  Printer,
   Puzzle,
   Receipt,
   RotateCcw,
+  Scale,
   ScanBarcode,
   Sparkles,
   Store,
@@ -33,6 +35,8 @@ const icons = {
   percent: Percent,
   receipt: Receipt,
   rotateCcw: RotateCcw,
+  printer: Printer,
+  scale: Scale,
 } as const;
 
 export type IconName = keyof typeof icons;
