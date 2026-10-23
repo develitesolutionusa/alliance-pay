@@ -10,8 +10,8 @@ export const industryPages: DetailContent[] = [
     description:
       "AlliancePay helps grocery operators keep lanes fast, track perishable and dry goods inventory, and manage departments without a tool for every aisle.",
     image: {
-      src: "/images/home/grocery.jpg",
-      alt: "Produce aisle in a grocery store",
+      src: "/images/industries/grocery/hero-premium.jpg",
+      alt: "Bright modern grocery aisle with fresh produce and refrigerated cases",
     },
     benefits: [
       {

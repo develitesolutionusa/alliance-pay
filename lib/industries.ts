@@ -15,8 +15,8 @@ export const industries: IndustryItem[] = [
     description: "High-volume lanes, weighted items, and department-ready inventory.",
     summary: "Complete POS workflows for grocery and supermarket lanes.",
     href: "/industries/grocery-stores",
-    image: "/images/home/grocery.jpg",
-    imageHint: "Produce aisle in a grocery store",
+    image: "/images/industries/grocery/hero-premium.jpg",
+    imageHint: "Bright modern grocery aisle with fresh produce and refrigerated cases",
   },
   {
     slug: "convenience-stores",

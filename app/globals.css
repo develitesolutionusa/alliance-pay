@@ -416,6 +416,18 @@
   }
 }
 
+@keyframes grocery-glow {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.12);
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .scroll-reveal.is-ready:not(.is-visible) .industry-flip {
     opacity: 0;

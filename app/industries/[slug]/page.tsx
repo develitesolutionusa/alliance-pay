@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import { DetailTemplate } from "@/components/marketing/DetailTemplate";
+import { GroceryStoresPage } from "@/components/marketing/GroceryStoresPage";
 import { Container } from "@/components/ui/Container";
 import { LoadingSkeleton } from "@/components/ui/LoadingSkeleton";
+import { groceryPage } from "@/lib/grocery-page";
 import { getIndustryPage, industryPages } from "@/lib/industry-pages";
 
 type Props = {
@@ -16,6 +18,12 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
+  if (slug === "grocery-stores") {
+    return {
+      title: "Grocery Stores",
+      description: groceryPage.description,
+    };
+  }
   const industry = getIndustryPage(slug);
   if (!industry) return {};
   return { title: industry.title, description: industry.description };
@@ -39,6 +47,11 @@ export default function IndustryDetailPage({ params }: Props) {
 
 async function IndustryDetailContent({ params }: Props) {
   const { slug } = await params;
+
+  if (slug === "grocery-stores") {
+    return <GroceryStoresPage />;
+  }
+
   const industry = getIndustryPage(slug);
   if (!industry) notFound();
 
