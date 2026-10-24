@@ -5,12 +5,14 @@ import { ConvenienceStoresPage } from "@/components/marketing/ConvenienceStoresP
 import { DetailTemplate } from "@/components/marketing/DetailTemplate";
 import { GroceryStoresPage } from "@/components/marketing/GroceryStoresPage";
 import { LiquorStoresPage } from "@/components/marketing/LiquorStoresPage";
+import { SmokeShopsPage } from "@/components/marketing/SmokeShopsPage";
 import { Container } from "@/components/ui/Container";
 import { LoadingSkeleton } from "@/components/ui/LoadingSkeleton";
 import { conveniencePage } from "@/lib/convenience-page";
 import { groceryPage } from "@/lib/grocery-page";
 import { getIndustryPage, industryPages } from "@/lib/industry-pages";
 import { liquorPage } from "@/lib/liquor-page";
+import { smokePage } from "@/lib/smoke-page";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -38,6 +40,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: "Liquor Stores",
       description: liquorPage.description,
+    };
+  }
+  if (slug === "smoke-shops") {
+    return {
+      title: "Smoke Shops",
+      description: smokePage.description,
     };
   }
   const industry = getIndustryPage(slug);
@@ -74,6 +82,10 @@ async function IndustryDetailContent({ params }: Props) {
 
   if (slug === "liquor-stores") {
     return <LiquorStoresPage />;
+  }
+
+  if (slug === "smoke-shops") {
+    return <SmokeShopsPage />;
   }
 
   const industry = getIndustryPage(slug);

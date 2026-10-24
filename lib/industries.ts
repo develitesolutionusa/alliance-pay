@@ -39,10 +39,10 @@ export const industries: IndustryItem[] = [
   {
     slug: "smoke-shops",
     title: "Smoke Shops",
-    description: "Restricted-product workflows with clear staff controls.",
+    description: "Age checks, display-case inventory, and clear staff controls.",
     summary: "Restricted-product workflows with clear staff controls.",
     href: "/industries/smoke-shops",
-    image: "/images/home/smoke.jpg",
-    imageHint: "Glass display cases in a specialty retail shop",
+    image: "/images/industries/smoke/hero-premium.jpg",
+    imageHint: "Bright modern smoke shop with glass display cases and organized specialty shelves",
   },
 ];

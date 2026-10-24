@@ -19,6 +19,7 @@ export default function PricingPage() {
   return (
     <>
       <PageHero
+        align="center"
         eyebrow="Pricing"
         title="Transparent plans for independent retailers"
         description={pricingConfig.disclaimer}

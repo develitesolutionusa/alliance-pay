@@ -1,10 +1,12 @@
+import type { IconName } from "@/components/icons/FeatureIcon";
+
 export type FeatureItem = {
   slug: string;
   title: string;
   description: string;
   summary: string;
   href: string;
-  icon: "scanBarcode" | "package" | "clipboardList" | "users" | "heart" | "chart" | "creditCard" | "layers" | "puzzle";
+  icon: IconName;
 };
 
 export const features: FeatureItem[] = [
@@ -14,7 +16,7 @@ export const features: FeatureItem[] = [
     description: "Scan, discount, tax, and tender sales with a clear, fast lane experience.",
     summary: "Fast checkout with scanning, discounts, tax, and tenders.",
     href: "/features/checkout",
-    icon: "scanBarcode",
+    icon: "shoppingCart",
   },
   {
     slug: "inventory",
@@ -22,7 +24,7 @@ export const features: FeatureItem[] = [
     description: "Track stock, adjustments, and reorder points across your catalog.",
     summary: "Track stock, adjustments, and reorder points.",
     href: "/features/inventory",
-    icon: "package",
+    icon: "warehouse",
   },
   {
     slug: "employee-management",
@@ -30,7 +32,7 @@ export const features: FeatureItem[] = [
     description: "Assign roles, manage shifts, and keep activity accountable.",
     summary: "Roles, shifts, and accountable staff activity.",
     href: "/features/employee-management",
-    icon: "users",
+    icon: "idCard",
   },
   {
     slug: "loyalty-marketing",
@@ -38,7 +40,7 @@ export const features: FeatureItem[] = [
     description: "Reward repeat customers with consent-based loyalty programs.",
     summary: "Consent-based rewards for repeat customers.",
     href: "/features/loyalty-marketing",
-    icon: "heart",
+    icon: "gift",
   },
   {
     slug: "reporting-analytics",
@@ -46,7 +48,7 @@ export const features: FeatureItem[] = [
     description: "Understand sales, margins, and store performance at a glance.",
     summary: "Sales, margins, and store performance in one view.",
     href: "/features/reporting-analytics",
-    icon: "chart",
+    icon: "trendingUp",
   },
   {
     slug: "multi-location",
@@ -54,7 +56,7 @@ export const features: FeatureItem[] = [
     description: "Switch stores, consolidate reporting, and transfer stock.",
     summary: "Switch stores, compare results, and transfer stock.",
     href: "/features/multi-location",
-    icon: "layers",
+    icon: "mapPinned",
   },
 ];
 

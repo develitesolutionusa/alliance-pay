@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { notFound } from "next/navigation";
-import { DetailTemplate } from "@/components/marketing/DetailTemplate";
+import { FeatureDetailPage } from "@/components/marketing/FeatureDetailPage";
 import { Container } from "@/components/ui/Container";
 import { LoadingSkeleton } from "@/components/ui/LoadingSkeleton";
 import { featurePages, getFeaturePage } from "@/lib/feature-pages";
@@ -29,7 +29,7 @@ function FeatureDetailFallback() {
   );
 }
 
-export default function FeatureDetailPage({ params }: Props) {
+export default function FeatureDetailRoute({ params }: Props) {
   return (
     <Suspense fallback={<FeatureDetailFallback />}>
       <FeatureDetailContent params={params} />
@@ -42,5 +42,5 @@ async function FeatureDetailContent({ params }: Props) {
   const feature = getFeaturePage(slug);
   if (!feature) notFound();
 
-  return <DetailTemplate content={feature} />;
+  return <FeatureDetailPage content={feature} />;
 }

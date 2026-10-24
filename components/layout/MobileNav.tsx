@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { useLenis } from "lenis/react";
 import { X } from "lucide-react";
 import { Logo } from "@/components/brand/Logo";
 import { PrimaryButton } from "@/components/ui/PrimaryButton";
@@ -16,14 +17,18 @@ type MobileNavProps = {
 };
 
 export function MobileNav({ open, onClose, items }: MobileNavProps) {
+  const lenis = useLenis();
+
   useEffect(() => {
     if (!open) return;
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    lenis?.stop();
     return () => {
       document.body.style.overflow = previous;
+      lenis?.start();
     };
-  }, [open]);
+  }, [open, lenis]);
 
   useEffect(() => {
     if (!open) return;
@@ -73,7 +78,7 @@ export function MobileNav({ open, onClose, items }: MobileNavProps) {
             <X className="h-5 w-5" />
           </button>
         </div>
-        <nav className="flex-1 overflow-y-auto px-4 py-4">
+        <nav className="flex-1 overflow-y-auto px-4 py-4" data-lenis-prevent>
           <ul className="space-y-4">
             {items.map((item) => (
               <li key={item.title}>

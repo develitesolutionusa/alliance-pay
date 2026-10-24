@@ -15,6 +15,7 @@ export default function FAQPage() {
   return (
     <>
       <PageHero
+        align="center"
         eyebrow="FAQ"
         title="Answers for retailers evaluating AlliancePay"
         description="Straightforward answers based on what is confirmed today — search to find a topic quickly."

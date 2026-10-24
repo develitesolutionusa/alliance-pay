@@ -4,6 +4,7 @@ import { Analytics } from "@/components/consent/Analytics";
 import { CookieConsent } from "@/components/consent/CookieConsent";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
@@ -39,11 +40,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
-        <SiteHeader />
-        <main className="min-w-0 flex-1">{children}</main>
-        <SiteFooter />
-        <CookieConsent />
-        <Analytics />
+        <SmoothScroll>
+          <SiteHeader />
+          <main className="min-w-0 flex-1">{children}</main>
+          <SiteFooter />
+          <CookieConsent />
+          <Analytics />
+        </SmoothScroll>
       </body>
     </html>
   );

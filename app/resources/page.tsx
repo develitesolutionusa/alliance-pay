@@ -16,6 +16,7 @@ export default function ResourcesPage() {
   return (
     <>
       <PageHero
+        align="center"
         eyebrow="Resources"
         title="Guides for independent retailers"
         description="Original AlliancePay articles on cutovers, inventory habits, and age-restricted sales — no fabricated customer stories."

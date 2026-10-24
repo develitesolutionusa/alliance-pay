@@ -210,8 +210,8 @@ export const industryPages: DetailContent[] = [
     description:
       "Specialty smoke and vape retail needs careful age controls, clear staff permissions, and inventory that tracks restricted SKUs accurately.",
     image: {
-      src: "/images/home/smoke.jpg",
-      alt: "Glass display cases in a specialty retail shop",
+      src: "/images/industries/smoke/hero-premium.jpg",
+      alt: "Bright modern smoke shop with glass display cases and organized specialty shelves",
     },
     benefits: [
       {

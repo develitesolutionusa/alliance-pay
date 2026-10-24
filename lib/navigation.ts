@@ -69,6 +69,27 @@ export const mainNav: NavItem[] = [
     ],
   },
   {
+    title: "Company",
+    href: "/about",
+    children: [
+      {
+        title: "About",
+        href: "/about",
+        description: "Our mission for independent retail.",
+      },
+      {
+        title: "Book a Demo",
+        href: "/book-demo",
+        description: "See AlliancePay with your store in mind.",
+      },
+      {
+        title: "Get Started",
+        href: "/get-started",
+        description: "Start your AlliancePay trial journey.",
+      },
+    ],
+  },
+  {
     title: "Features",
     href: "/features",
     children: [
@@ -108,6 +129,11 @@ export const mainNav: NavItem[] = [
         description: "Supported tenders through certified providers.",
       },
       {
+        title: "Multi-Location",
+        href: "/features/multi-location",
+        description: "Switch stores, compare results, and transfer stock.",
+      },
+      {
         title: "Integrations",
         href: "/features/integrations",
         description: "Connect tools your store already uses.",
@@ -133,27 +159,6 @@ export const mainNav: NavItem[] = [
         title: "Contact",
         href: "/contact",
         description: "Reach the AlliancePay team.",
-      },
-    ],
-  },
-  {
-    title: "Company",
-    href: "/about",
-    children: [
-      {
-        title: "About",
-        href: "/about",
-        description: "Our mission for independent retail.",
-      },
-      {
-        title: "Book a Demo",
-        href: "/book-demo",
-        description: "See AlliancePay with your store in mind.",
-      },
-      {
-        title: "Get Started",
-        href: "/get-started",
-        description: "Start your AlliancePay trial journey.",
       },
     ],
   },

@@ -10,6 +10,7 @@ type PageHeroProps = {
   description?: string;
   primaryCta?: { label: string; href: string };
   secondaryCta?: { label: string; href: string };
+  align?: "left" | "center";
   className?: string;
   children?: React.ReactNode;
 };
@@ -20,9 +21,12 @@ export function PageHero({
   description,
   primaryCta,
   secondaryCta,
+  align = "left",
   className,
   children,
 }: PageHeroProps) {
+  const centered = align === "center";
+
   return (
     <section
       className={cn(
@@ -31,7 +35,12 @@ export function PageHero({
       )}
     >
       <Container>
-        <div className="max-w-3xl">
+        <div
+          className={cn(
+            "max-w-3xl",
+            centered && "mx-auto text-center",
+          )}
+        >
           {eyebrow ? (
             <ScrollReveal variant="up" delay={40}>
               <p className="text-gradient-brand mb-3 text-sm font-semibold tracking-wide">
@@ -46,12 +55,24 @@ export function PageHero({
           </ScrollReveal>
           {description ? (
             <ScrollReveal variant="up" delay={180}>
-              <p className="mt-5 text-lg leading-8 text-muted">{description}</p>
+              <p
+                className={cn(
+                  "mt-5 text-lg leading-8 text-muted",
+                  centered && "mx-auto max-w-2xl",
+                )}
+              >
+                {description}
+              </p>
             </ScrollReveal>
           ) : null}
           {(primaryCta || secondaryCta) && (
             <ScrollReveal variant="up" delay={260}>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div
+                className={cn(
+                  "mt-8 flex flex-col gap-3 sm:flex-row",
+                  centered && "sm:justify-center",
+                )}
+              >
                 {primaryCta ? (
                   <PrimaryButton href={primaryCta.href}>
                     {primaryCta.label}

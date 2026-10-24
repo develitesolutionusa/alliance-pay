@@ -29,7 +29,7 @@ export function FeatureCard({
           className,
         )}
       >
-        <span className="icon-well flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-primary">
+        <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-white shadow-sm shadow-primary/25">
           <FeatureIcon name={icon} className="h-5 w-5" />
         </span>
         <span className="min-w-0">
@@ -54,8 +54,8 @@ export function FeatureCard({
         className,
       )}
     >
-      <div className="icon-well mb-4 flex h-11 w-11 items-center justify-center rounded-xl text-primary">
-        <FeatureIcon name={icon} className="h-5 w-5" />
+      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-white shadow-sm shadow-primary/25">
+        <FeatureIcon name={icon} className="h-6 w-6" />
       </div>
       <h3 className="text-gradient text-lg font-semibold">{title}</h3>
       <p className="mt-2 flex-1 text-sm leading-6 text-muted">{description}</p>

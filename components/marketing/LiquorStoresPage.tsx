@@ -154,6 +154,12 @@ export function LiquorStoresPage() {
               </ScrollReveal>
             ))}
           </div>
+          <ScrollReveal variant="up" delay={200} className="mt-10 flex justify-center">
+            <PrimaryButton href="/pricing">
+              View Pricing
+              <ArrowRight className="h-4 w-4" aria-hidden />
+            </PrimaryButton>
+          </ScrollReveal>
         </Container>
       </section>
 

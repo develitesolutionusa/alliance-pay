@@ -109,12 +109,9 @@ export function IndustryCard({
             aria-hidden
           />
           <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-            <p className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/70">
-              Industry
-            </p>
             <h3
               id={titleId}
-              className="mt-2 text-xl font-bold tracking-tight text-white sm:text-2xl"
+              className="text-xl font-bold tracking-tight text-white sm:text-2xl"
             >
               {title}
             </h3>
@@ -136,9 +133,7 @@ export function IndustryCard({
                 >
                   Flip card
                 </button>
-              ) : (
-                <span className="text-sm text-white/70">Hover to flip</span>
-              )}
+              ) : null}
             </div>
           </div>
         </div>
