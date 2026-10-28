@@ -15,19 +15,19 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="relative isolate overflow-hidden border-b border-border bg-white lg:min-h-[40rem]">
-        <div className="absolute inset-0 hidden lg:block" aria-hidden>
+      <section className="relative isolate min-h-[36rem] overflow-hidden border-b border-border bg-white sm:min-h-[40rem] lg:min-h-[40rem]">
+        <div className="absolute inset-0" aria-hidden>
           <Image
             src={aboutContent.image.src}
             alt=""
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[92%_48%]"
+            className="object-cover object-[68%_40%] lg:object-[92%_48%]"
           />
         </div>
         <div
-          className="pointer-events-none absolute inset-0 hidden bg-[linear-gradient(90deg,#ffffff_0%,#ffffff_16%,rgb(255_255_255_/_0.94)_30%,rgb(255_255_255_/_0.62)_42%,rgb(255_255_255_/_0.16)_54%,transparent_66%)] lg:block"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,rgb(255_255_255_/_0.96)_16%,rgb(255_255_255_/_0.78)_34%,rgb(255_255_255_/_0.28)_50%,transparent_66%)] lg:bg-[linear-gradient(90deg,#ffffff_0%,#ffffff_16%,rgb(255_255_255_/_0.94)_30%,rgb(255_255_255_/_0.62)_42%,rgb(255_255_255_/_0.16)_54%,transparent_66%)]"
           aria-hidden
         />
         <div
@@ -38,12 +38,12 @@ export default function AboutPage() {
           className="pointer-events-none absolute bottom-0 right-1/4 hidden h-56 w-56 rounded-full bg-[#3d93ff]/25 blur-3xl motion-safe:animate-[grocery-glow_7.5s_ease-in-out_infinite_reverse] lg:block"
           aria-hidden
         />
-        <p className="sr-only max-lg:hidden">{aboutContent.image.alt}</p>
+        <p className="sr-only">{aboutContent.image.alt}</p>
 
-        <Container className="relative py-14 sm:py-20 lg:flex lg:min-h-[40rem] lg:items-center">
+        <Container className="relative flex min-h-[36rem] items-start pt-12 pb-16 sm:min-h-[40rem] sm:pt-14 lg:min-h-[40rem] lg:items-center lg:py-20">
           <div className="relative max-w-xl">
             <div
-              className="pointer-events-none absolute -inset-x-5 -inset-y-6 hidden rounded-3xl bg-white/45 blur-xl lg:block"
+              className="pointer-events-none absolute -inset-x-5 -inset-y-6 rounded-3xl bg-white/70 blur-xl lg:bg-white/45"
               aria-hidden
             />
             <div className="relative">
@@ -70,24 +70,11 @@ export default function AboutPage() {
             </div>
           </div>
         </Container>
-
-        <Container className="relative pb-14 lg:hidden">
-          <div className="relative aspect-[16/10] overflow-hidden rounded-[1.5rem] border border-border shadow-[0_24px_50px_-28px_rgb(16_27_53_/_0.45)]">
-            <Image
-              src={aboutContent.image.src}
-              alt={aboutContent.image.alt}
-              fill
-              priority
-              sizes="100vw"
-              className="object-cover object-[72%_center]"
-            />
-          </div>
-        </Container>
       </section>
 
       <section className="py-20 sm:py-28 lg:py-32" aria-labelledby="overview-heading">
         <Container className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-          <ScrollReveal variant="scale">
+          <ScrollReveal variant="scale" className="order-2 lg:order-1">
             <div className="group relative">
               <div className="overflow-hidden rounded-[1.5rem] border border-border bg-white shadow-[0_24px_50px_-28px_rgb(16_27_53_/_0.4)] ring-1 ring-primary/10 transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_24px_50px_-18px_rgb(18_99_241_/_0.45)] group-hover:ring-primary/30">
                 <div className="relative aspect-[4/3]">
@@ -106,7 +93,7 @@ export default function AboutPage() {
               />
             </div>
           </ScrollReveal>
-          <div>
+          <div className="order-1 lg:order-2">
             <SectionHeading
               id="overview-heading"
               title={aboutContent.overview.title}

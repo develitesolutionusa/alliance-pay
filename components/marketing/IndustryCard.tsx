@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState, useSyncExternalStore } from "react";
+import { useId, useSyncExternalStore } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -47,7 +47,6 @@ export function IndustryCard({
   variant = "default",
 }: IndustryCardProps) {
   const titleId = useId();
-  const [flipped, setFlipped] = useState(false);
   const reducedMotion = useSyncExternalStore(
     subscribeReducedMotion,
     getReducedMotion,
@@ -72,8 +71,6 @@ export function IndustryCard({
     );
   }
 
-  const showBack = finePointer ? undefined : flipped;
-
   return (
     <article
       className={cn(
@@ -86,7 +83,6 @@ export function IndustryCard({
           "relative h-full min-h-[22rem] rounded-[var(--radius-card)] transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] [transform-style:preserve-3d]",
           finePointer &&
             "group-hover:[transform:rotateY(180deg)] group-focus-within:[transform:rotateY(180deg)]",
-          !finePointer && flipped && "[transform:rotateY(180deg)]",
         )}
       >
         {/* Cover face */}
@@ -115,7 +111,7 @@ export function IndustryCard({
             >
               {title}
             </h3>
-            <div className="mt-4 flex flex-wrap items-center gap-3">
+            <div className="mt-4">
               <Link
                 href={href}
                 className="inline-flex items-center gap-1.5 rounded-[var(--radius-button)] bg-white px-3.5 py-2 text-sm font-semibold text-primary shadow-sm transition hover:bg-primary-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -123,17 +119,6 @@ export function IndustryCard({
                 View industry
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
-              {!finePointer ? (
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-1.5 rounded-[var(--radius-button)] bg-white/15 px-3.5 py-2 text-sm font-semibold text-white backdrop-blur-sm transition hover:bg-white/25 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                  aria-expanded={flipped}
-                  aria-controls={`${titleId}-back`}
-                  onClick={() => setFlipped(true)}
-                >
-                  Flip card
-                </button>
-              ) : null}
             </div>
           </div>
         </div>
@@ -146,7 +131,7 @@ export function IndustryCard({
             "[backface-visibility:hidden] [transform:rotateY(180deg)]",
             "bg-[linear-gradient(160deg,#0b4dce_0%,#1263f1_42%,#071c62_100%)]",
           )}
-          aria-hidden={finePointer ? undefined : !showBack}
+          aria-hidden={finePointer ? undefined : true}
         >
           <p className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/70">
             Built for
@@ -157,7 +142,7 @@ export function IndustryCard({
           <p className="mt-4 flex-1 text-sm leading-6 text-white/85">
             {description}
           </p>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+          <div className="mt-6">
             <Link
               href={href}
               className="inline-flex items-center gap-1.5 rounded-[var(--radius-button)] bg-white px-4 py-2.5 text-sm font-semibold text-primary shadow-sm transition hover:bg-primary-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
@@ -165,15 +150,6 @@ export function IndustryCard({
               Learn more
               <ArrowRight className="h-4 w-4" aria-hidden />
             </Link>
-            {!finePointer ? (
-              <button
-                type="button"
-                className="text-sm font-semibold text-white/80 underline-offset-2 hover:text-white hover:underline"
-                onClick={() => setFlipped(false)}
-              >
-                Flip back
-              </button>
-            ) : null}
           </div>
         </div>
       </div>
