@@ -19,7 +19,7 @@ export default function ProductsPage() {
         eyebrow="Products"
         title="Retail tools that work together"
         description="Explore AlliancePay products for the counter, back office, customer display, hardware, and multi-store operations."
-        primaryCta={{ label: "Book a Demo", href: "/book-demo" }}
+        primaryCta={{ label: "Contact us", href: "/contact" }}
         secondaryCta={{ label: "Explore Features", href: "/features" }}
       />
       <Container className="grid gap-6 py-12 sm:grid-cols-2">

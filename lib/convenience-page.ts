@@ -142,7 +142,7 @@ export const conveniencePage = {
   switching: [
     {
       timing: "Today",
-      title: "Book a demo",
+      title: "Talk with us",
       description: "We learn about your store layout, inventory, and shift workflow.",
     },
     {

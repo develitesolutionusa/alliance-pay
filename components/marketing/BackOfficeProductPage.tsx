@@ -44,8 +44,7 @@ export function BackOfficeProductPage() {
               </ScrollReveal>
               <ScrollReveal variant="up" delay={260}>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <PrimaryButton href="/get-started">Start Free Trial</PrimaryButton>
-                  <SecondaryButton href="/book-demo">Book a Demo</SecondaryButton>
+                  <PrimaryButton href="/contact">Start Free Trial</PrimaryButton>
                 </div>
               </ScrollReveal>
               <ScrollReveal variant="up" delay={320}>
@@ -145,7 +144,7 @@ export function BackOfficeProductPage() {
                 description="A predictable rhythm managers can run every day."
               />
               <div className="mt-8">
-                <PrimaryButton href="/book-demo">Book a Demo</PrimaryButton>
+                <PrimaryButton href="/contact">Contact us</PrimaryButton>
               </div>
             </div>
             <WorkflowTimeline
@@ -278,7 +277,7 @@ export function BackOfficeProductPage() {
 
       <CTABanner
         title="Ready to run the store from one workspace?"
-        description="Start a trial conversation or book a demo — we’ll walk through dashboard, inventory, and purchasing for your stores."
+        description="Start a trial conversation or contact us — we’ll walk through dashboard, inventory, and purchasing for your stores."
       />
     </>
   );

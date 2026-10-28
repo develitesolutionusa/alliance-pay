@@ -1,5 +1,6 @@
 "use client";
 
+import { useLayoutEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type { NavChild } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
@@ -12,13 +13,30 @@ type MegaMenuProps = {
 };
 
 export function MegaMenu({ items, open, labelledBy, onNavigate }: MegaMenuProps) {
+  const panelRef = useRef<HTMLDivElement>(null);
+  const [alignEnd, setAlignEnd] = useState(false);
+
+  useLayoutEffect(() => {
+    const panel = panelRef.current;
+    if (!open || !panel) return;
+    const { left, right } = panel.getBoundingClientRect();
+    const overflowsRight = right > window.innerWidth - 12;
+    const overflowsLeft = left < 12;
+    if (!alignEnd && overflowsRight) setAlignEnd(true);
+    if (alignEnd && overflowsLeft && !overflowsRight) setAlignEnd(false);
+  }, [open, alignEnd, items]);
+
   if (!open) return null;
 
   return (
     <div
+      ref={panelRef}
       role="region"
       aria-labelledby={labelledBy}
-      className="absolute left-0 top-full z-50 mt-2 w-[min(36rem,calc(100vw-2rem))] rounded-[var(--radius-card)] border border-border bg-white p-3 shadow-md"
+      className={cn(
+        "absolute top-full z-50 mt-2 w-[min(36rem,calc(100vw-2rem))] rounded-[var(--radius-card)] border border-border bg-white p-3 shadow-md",
+        alignEnd ? "right-0 left-auto" : "left-0",
+      )}
     >
       <ul className="grid gap-1 sm:grid-cols-2">
         {items.map((item) => (

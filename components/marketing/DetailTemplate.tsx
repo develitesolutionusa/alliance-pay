@@ -21,7 +21,7 @@ export function DetailTemplate({ content }: DetailTemplateProps) {
         eyebrow={content.eyebrow}
         title={content.title}
         description={content.description}
-        primaryCta={{ label: "Book a Demo", href: "/book-demo" }}
+        primaryCta={{ label: "Contact us", href: "/contact" }}
         secondaryCta={{ label: "View Pricing", href: "/pricing" }}
       >
         {content.image ? (

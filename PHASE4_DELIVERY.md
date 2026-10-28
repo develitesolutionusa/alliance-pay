@@ -39,7 +39,7 @@ Copy `.env.example` and set as needed (never commit secrets):
 | `NEXT_PUBLIC_SITE_URL` | Canonical site URL |
 | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional GA; enables consent banner |
 | `RESEND_API_KEY` | Resend API key for lead email |
-| `LEAD_TO_EMAIL` | Inbox for leads (defaults to `hello@alliancepay.com`) |
+| `LEAD_TO_EMAIL` | Inbox for leads (defaults to the public support email, `arif1@att.net`) |
 | `LEAD_FROM_EMAIL` | Verified Resend from address |
 | `LEAD_WEBHOOK_URL` | Optional CRM/automation endpoint |
 | `LEAD_WEBHOOK_SECRET` | Optional `Authorization: Bearer` for webhook |

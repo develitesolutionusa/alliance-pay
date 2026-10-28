@@ -161,7 +161,7 @@ export const featurePages: FeaturePageContent[] = [
     ],
     ctaTitle: "Ready to try AlliancePay at the counter?",
     ctaDescription:
-      "Start a trial conversation or book a demo — we will walk through your lane hardware and tenders honestly.",
+      "Start a trial conversation or contact us — we will walk through your lane hardware and tenders honestly.",
   },
   {
     slug: "inventory",
@@ -280,7 +280,7 @@ export const featurePages: FeaturePageContent[] = [
     ],
     ctaTitle: "Want inventory that matches the floor?",
     ctaDescription:
-      "Book a demo to walk through receiving, counts, and reorder thresholds for your catalog.",
+      "Contact us to walk through receiving, counts, and reorder thresholds for your catalog.",
   },
   {
     slug: "purchase-orders",
@@ -398,7 +398,7 @@ export const featurePages: FeaturePageContent[] = [
     ],
     ctaTitle: "Ready to clean up purchasing?",
     ctaDescription:
-      "Book a demo to see how AlliancePay purchase orders connect vendors, receiving, and stock.",
+      "Contact us to see how AlliancePay purchase orders connect vendors, receiving, and stock.",
   },
   {
     slug: "employee-management",
@@ -516,7 +516,7 @@ export const featurePages: FeaturePageContent[] = [
     ],
     ctaTitle: "Want clearer staff permissions?",
     ctaDescription:
-      "Book a demo to map roles, shifts, and approvals to how your store actually runs.",
+      "Contact us to map roles, shifts, and approvals to how your store actually runs.",
   },
   {
     slug: "loyalty-marketing",
@@ -634,7 +634,7 @@ export const featurePages: FeaturePageContent[] = [
     ],
     ctaTitle: "Want loyalty that fits your lane?",
     ctaDescription:
-      "Book a demo to design a consent-based rewards flow your cashiers can actually run.",
+      "Contact us to design a consent-based rewards flow your cashiers can actually run.",
   },
   {
     slug: "reporting-analytics",
@@ -752,7 +752,7 @@ export const featurePages: FeaturePageContent[] = [
     ],
     ctaTitle: "Want clearer store numbers?",
     ctaDescription:
-      "Book a demo to review the reports AlliancePay prioritizes for independent retailers.",
+      "Contact us to review the reports AlliancePay prioritizes for independent retailers.",
   },
   {
     slug: "payments",
@@ -872,7 +872,7 @@ export const featurePages: FeaturePageContent[] = [
       "Payment method availability depends on region, provider certification, and your commercial agreement.",
     ctaTitle: "Need a clear payments path for your market?",
     ctaDescription:
-      "Book a demo and we will discuss certified options for your region — without inventing partner logos.",
+      "Contact us and we will discuss certified options for your region — without inventing partner logos.",
   },
   {
     slug: "multi-location",
@@ -991,7 +991,7 @@ export const featurePages: FeaturePageContent[] = [
     ],
     ctaTitle: "Running more than one store?",
     ctaDescription:
-      "Book a demo to see store switching, transfers, and consolidated reporting for your footprint.",
+      "Contact us to see store switching, transfers, and consolidated reporting for your footprint.",
   },
   {
     slug: "integrations",
@@ -1105,13 +1105,13 @@ export const featurePages: FeaturePageContent[] = [
     ],
     related: [
       { title: "Payments", description: "Certified payment providers.", href: "/features/payments" },
-      { title: "Book a Demo", description: "Tell us which tools you need connected.", href: "/book-demo" },
+      { title: "Contact us", description: "Tell us which tools you need connected.", href: "/contact" },
     ],
     disclaimer:
       "Integration availability is not implied by this page. Ask for a current list for your market.",
     ctaTitle: "Have tools AlliancePay should connect to?",
     ctaDescription:
-      "Book a demo and bring your current stack — we will be honest about what is verified today.",
+      "Contact us and bring your current stack — we will be honest about what is verified today.",
   },
 ];
 

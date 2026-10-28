@@ -19,7 +19,7 @@ export function PlaceholderPage({
         eyebrow={eyebrow}
         title={title}
         description={description}
-        primaryCta={{ label: "Book a Demo", href: "/book-demo" }}
+        primaryCta={{ label: "Contact us", href: "/contact" }}
         secondaryCta={{ label: "View Features", href: "/features" }}
       />
       <CTABanner />

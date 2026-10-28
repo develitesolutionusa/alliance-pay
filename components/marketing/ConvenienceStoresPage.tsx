@@ -74,7 +74,7 @@ export function ConvenienceStoresPage() {
               </ScrollReveal>
               <ScrollReveal variant="up" delay={280}>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <PrimaryButton href="/get-started" className="px-6 py-3 text-base">
+                  <PrimaryButton href="/contact" className="px-6 py-3 text-base">
                     Start Free Trial
                   </PrimaryButton>
                   <SecondaryButton
@@ -254,7 +254,7 @@ export function ConvenienceStoresPage() {
                 ))}
               </ul>
               <ScrollReveal variant="up" delay={280} className="mt-8">
-                <PrimaryButton href="/book-demo">Book a Demo</PrimaryButton>
+                <PrimaryButton href="/contact">Contact us</PrimaryButton>
               </ScrollReveal>
             </div>
           </div>
@@ -276,8 +276,8 @@ export function ConvenienceStoresPage() {
                 description="A predictable convenience rhythm cashiers and managers can learn quickly."
               />
               <div className="mt-8">
-                <PrimaryButton href="/book-demo">
-                  Book a Demo
+                <PrimaryButton href="/contact">
+                  Contact us
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </PrimaryButton>
               </div>

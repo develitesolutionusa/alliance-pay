@@ -1,4 +1,5 @@
 import type { FAQItem } from "@/components/marketing/FAQAccordion";
+import { siteConfig } from "@/lib/site";
 
 export const siteFaqs: FAQItem[] = [
   {
@@ -19,12 +20,12 @@ export const siteFaqs: FAQItem[] = [
   {
     question: "Can I create an account today?",
     answer:
-      "Self-serve authentication is not connected yet. Use Get Started or Book a Demo for lead capture and follow-up from the AlliancePay team.",
+      "Self-serve authentication is not connected yet. Use Contact us for lead capture and follow-up from the AlliancePay team.",
   },
   {
-    question: "Do demo and contact forms email you today?",
+    question: "Do contact forms email you today?",
     answer:
-      "Yes when delivery is configured. Forms validate on the client and server, use honeypot and rate-limit abuse controls, and send via email (Resend) and/or a CRM webhook. If delivery is not configured in production, the form asks you to email hello@alliancepay.com instead.",
+      `Yes when delivery is configured. Forms validate on the client and server, use honeypot and rate-limit abuse controls, and send via SMTP email and/or a CRM webhook. If delivery is not configured in production, the form asks you to email ${siteConfig.supportEmail} instead.`,
   },
   {
     question: "Which payment methods do you support?",
@@ -59,7 +60,7 @@ export const siteFaqs: FAQItem[] = [
   {
     question: "How do I talk to someone?",
     answer:
-      "Email hello@alliancepay.com, use the contact form, or book a demo. Response times will be confirmed with support policy — we do not claim unverified 24/7 coverage.",
+      `Email ${siteConfig.supportEmail} or use the contact form. Response times will be confirmed with support policy — we do not claim unverified 24/7 coverage.`,
   },
 ];
 

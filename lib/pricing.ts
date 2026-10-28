@@ -36,7 +36,7 @@ export const pricingConfig = {
       monthlyPriceCents: null,
       annualPriceCents: null,
       ctaLabel: "Talk to sales",
-      ctaHref: "/book-demo",
+      ctaHref: "/contact",
       features: [
         { label: "POS Checkout", included: true },
         { label: "Basic Inventory", included: true },
@@ -52,8 +52,8 @@ export const pricingConfig = {
       description: "Advanced inventory, staff tools, and growth features.",
       monthlyPriceCents: null,
       annualPriceCents: null,
-      ctaLabel: "Book a demo",
-      ctaHref: "/book-demo",
+      ctaLabel: "Contact us",
+      ctaHref: "/contact",
       highlighted: true,
       features: [
         { label: "Everything in Essential", included: true },

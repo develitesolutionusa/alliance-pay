@@ -5,7 +5,6 @@ import {
 } from "@/components/marketing/HeroBackgroundSlider";
 import { Container } from "@/components/ui/Container";
 import { PrimaryButton } from "@/components/ui/PrimaryButton";
-import { SecondaryButton } from "@/components/ui/SecondaryButton";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { benefitIndicators } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -87,15 +86,9 @@ export function Hero({
             </ScrollReveal>
             <ScrollReveal variant="up" delay={280}>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <PrimaryButton href="/get-started" className="px-6 py-3 text-base">
+                <PrimaryButton href="/contact" className="px-6 py-3 text-base">
                   Start Free Trial
                 </PrimaryButton>
-                <SecondaryButton
-                  href="/book-demo"
-                  className="bg-white/95 px-6 py-3 text-base"
-                >
-                  Book a Demo
-                </SecondaryButton>
               </div>
             </ScrollReveal>
 

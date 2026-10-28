@@ -22,7 +22,7 @@ export default function TermsPage() {
           paragraphs={[
             "This page is a structural placeholder for AlliancePay terms of service, acceptable use, and commercial conditions.",
             "Marketing copy, plan names, and feature lists on this website are not a binding offer until counsel-reviewed terms and approved pricing are published.",
-            "For current commercial discussions, use Book a Demo or Contact — and request written terms from AlliancePay.",
+            "For current commercial discussions, use Contact — and request written terms from AlliancePay.",
           ]}
         />
       </Container>

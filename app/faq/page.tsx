@@ -20,7 +20,7 @@ export default function FAQPage() {
         title="Answers for retailers evaluating AlliancePay"
         description="Straightforward answers based on what is confirmed today — search to find a topic quickly."
         primaryCta={{ label: "Contact Us", href: "/contact" }}
-        secondaryCta={{ label: "Book a Demo", href: "/book-demo" }}
+        secondaryCta={{ label: "Contact us", href: "/contact" }}
       />
       <Container className="max-w-3xl py-12">
         <ScrollReveal variant="up">

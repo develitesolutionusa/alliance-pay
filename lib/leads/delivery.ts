@@ -4,6 +4,7 @@ import {
   type LeadIntent,
   type LeadPayload,
 } from "@/lib/leads/schema";
+import { readSmtpConfig, sendSmtpMail } from "@/lib/leads/smtp";
 
 export type DeliveryResult =
   | { status: "delivered"; channels: string[] }
@@ -12,7 +13,9 @@ export type DeliveryResult =
 
 function isDeliveryConfigured() {
   return Boolean(
-    process.env.RESEND_API_KEY?.trim() || process.env.LEAD_WEBHOOK_URL?.trim(),
+    readSmtpConfig() ||
+      process.env.RESEND_API_KEY?.trim() ||
+      process.env.LEAD_WEBHOOK_URL?.trim(),
   );
 }
 
@@ -119,7 +122,8 @@ async function sendViaWebhook(payload: LeadPayload): Promise<boolean> {
 }
 
 /**
- * Deliver a validated lead. Prefer Resend and/or webhook when configured.
+ * Deliver a validated lead. SMTP is the email channel when configured;
+ * Resend remains a fallback, and a CRM webhook can run alongside either.
  * In development without providers, log to the server console so local testing works.
  */
 export async function deliverLead(
@@ -145,9 +149,29 @@ export async function deliverLead(
 
   const channels: string[] = [];
   const errors: Error[] = [];
+  const smtp = readSmtpConfig();
 
   try {
-    if (await sendViaResend(payload)) channels.push("email");
+    if (smtp) {
+      await sendSmtpMail({
+        from: smtp.from,
+        to: smtp.to,
+        replyTo: payload.email,
+        subject: `[AlliancePay] ${intentLabels[payload.intent]} — ${payload.name}`,
+        html: buildEmailHtml(payload),
+        text: [
+          `Intent: ${intentLabels[payload.intent]}`,
+          `Name: ${payload.name}`,
+          `Email: ${payload.email}`,
+          `Company: ${payload.company?.trim() || "—"}`,
+          "",
+          payload.message,
+        ].join("\n"),
+      });
+      channels.push("email");
+    } else if (await sendViaResend(payload)) {
+      channels.push("email");
+    }
   } catch (error) {
     errors.push(error instanceof Error ? error : new Error(String(error)));
   }

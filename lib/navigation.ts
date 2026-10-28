@@ -11,6 +11,7 @@ export type NavItem = {
 };
 
 export const mainNav: NavItem[] = [
+  { title: "About us", href: "/about" },
   {
     title: "Products",
     href: "/products",
@@ -69,27 +70,6 @@ export const mainNav: NavItem[] = [
     ],
   },
   {
-    title: "Company",
-    href: "/about",
-    children: [
-      {
-        title: "About",
-        href: "/about",
-        description: "Our mission for independent retail.",
-      },
-      {
-        title: "Book a Demo",
-        href: "/book-demo",
-        description: "See AlliancePay with your store in mind.",
-      },
-      {
-        title: "Get Started",
-        href: "/get-started",
-        description: "Start your AlliancePay trial journey.",
-      },
-    ],
-  },
-  {
     title: "Features",
     href: "/features",
     children: [
@@ -141,27 +121,6 @@ export const mainNav: NavItem[] = [
     ],
   },
   { title: "Pricing", href: "/pricing" },
-  {
-    title: "Resources",
-    href: "/resources",
-    children: [
-      {
-        title: "Guides",
-        href: "/resources",
-        description: "Articles and how-tos for independent retailers.",
-      },
-      {
-        title: "FAQ",
-        href: "/faq",
-        description: "Answers about AlliancePay products and plans.",
-      },
-      {
-        title: "Contact",
-        href: "/contact",
-        description: "Reach the AlliancePay team.",
-      },
-    ],
-  },
 ];
 
 export const footerNav = {
@@ -181,13 +140,21 @@ export const footerNav = {
   company: [
     { title: "About", href: "/about" },
     { title: "Contact", href: "/contact" },
-    { title: "Book a Demo", href: "/book-demo" },
-    { title: "Get Started", href: "/get-started" },
+  ],
+  features: [
+    { title: "Checkout", href: "/features/checkout" },
+    { title: "Inventory", href: "/features/inventory" },
+    { title: "Purchase Orders", href: "/features/purchase-orders" },
+    { title: "Employee Management", href: "/features/employee-management" },
+    { title: "Loyalty & Marketing", href: "/features/loyalty-marketing" },
+    { title: "Reporting & Analytics", href: "/features/reporting-analytics" },
+    { title: "Payments", href: "/features/payments" },
+    { title: "Multi-Location", href: "/features/multi-location" },
+    { title: "Integrations", href: "/features/integrations" },
   ],
   resources: [
     { title: "Resources", href: "/resources" },
     { title: "FAQ", href: "/faq" },
-    { title: "Features", href: "/features" },
   ],
   legal: [
     { title: "Privacy", href: "/privacy" },

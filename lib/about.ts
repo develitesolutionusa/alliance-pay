@@ -1,46 +1,44 @@
 export const aboutContent = {
-  eyebrow: "Company",
+  eyebrow: "About us",
   title: "Built for independent retailers",
   description:
-    "AlliancePay is a retail POS and store-management platform focused on grocery, convenience, liquor, and specialty shops that need dependable tools without enterprise theater.",
-  mission: {
-    title: "Our mission",
+    "AlliancePay is the POS and back office for grocery, convenience, liquor, and specialty shops.",
+  overview: {
+    title: "One place for the counter and the office",
     paragraphs: [
-      "Help independent retailers run cleaner counters, clearer inventory, and more accountable teams — with software that tells the truth about what is shipping today.",
-      "We prioritize practical workflows over logo walls, unverified ratings, and promises we cannot keep.",
+      "AlliancePay keeps the sale and the back office in one system. Staff scan an item, apply the discount and tax, take payment, and print the receipt without leaving the counter.",
+      "Managers see what sold, what to reorder, and who worked the shift. Owners with more than one location can switch stores, compare results, and move stock between them.",
+      "Grocery, convenience, liquor, and smoke shops share that system, with support for perishable stock, fast lanes, and age-restricted sales.",
     ],
+    image: {
+      src: "/images/about/office-premium.jpg",
+      alt: "A store office desk with a laptop and tablet, opening onto a grocery aisle of produce and refrigerated cases.",
+    },
   },
   principles: [
     {
-      title: "Truthful product claims",
+      title: "Retail-first screens",
       description:
-        "Pricing, integrations, payment methods, and support hours publish only when verified.",
+        "Checkout and back-office views are written for busy lanes and new hires, with plain language and short paths to the next task.",
     },
     {
-      title: "Retail-first design",
+      title: "Honest product scope",
       description:
-        "Screens and language built for busy lanes, not for demo-day theater.",
+        "Integrations, tenders, and devices are named only after they are verified. Pending work stays marked as pending.",
     },
     {
-      title: "Operator respect",
+      title: "Clear roles for staff",
       description:
-        "Independent owners deserve clear onboarding, honest pending states, and tools that fit real staff skill mixes.",
+        "Owners, managers, and cashiers can be given different access so the counter stays fast and the back office stays accountable.",
     },
     {
-      title: "Security by default",
+      title: "Payments kept off the register",
       description:
-        "Card data stays with certified providers. Tenant isolation and role controls are required before authenticated POS launch.",
+        "Card data stays with certified payment providers. AlliancePay does not store raw card numbers on the store's system.",
     },
   ],
-  story: {
-    title: "Where we are today",
-    paragraphs: [
-      "AlliancePay is building a premium marketing experience and conversion flows first, then an authenticated POS platform under a separate, approved milestone.",
-      "Team bios, investor lists, and customer counts will appear only with approved company facts — this page will not invent proof points.",
-    ],
-  },
   image: {
-    src: "/images/home/owner.jpg",
-    alt: "Independent retail operator representing AlliancePay’s customer focus",
+    src: "/images/about/hero-grocery-screen.jpg",
+    alt: "A grocery supermarket checkout with produce displays, stocked aisles, refrigerated cases, and a point-of-sale terminal.",
   },
 } as const;

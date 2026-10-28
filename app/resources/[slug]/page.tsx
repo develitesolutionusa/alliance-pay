@@ -116,8 +116,8 @@ async function ResourceArticleContent({ params }: Props) {
               Explore features
             </Link>{" "}
             or{" "}
-            <Link href="/book-demo" className="font-semibold text-primary">
-              book a demo
+            <Link href="/contact" className="font-semibold text-primary">
+              contact us
             </Link>
             .
           </p>

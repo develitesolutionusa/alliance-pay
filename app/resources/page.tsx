@@ -21,7 +21,7 @@ export default function ResourcesPage() {
         title="Guides for independent retailers"
         description="Original AlliancePay articles on cutovers, inventory habits, and age-restricted sales — no fabricated customer stories."
         primaryCta={{ label: "Browse FAQ", href: "/faq" }}
-        secondaryCta={{ label: "Book a Demo", href: "/book-demo" }}
+        secondaryCta={{ label: "Contact us", href: "/contact" }}
       />
       <Container className="grid gap-6 py-12 sm:grid-cols-2 lg:grid-cols-3">
         {resources.map((article, index) => (

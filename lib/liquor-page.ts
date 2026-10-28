@@ -148,7 +148,7 @@ export const liquorPage = {
   switching: [
     {
       timing: "Today",
-      title: "Book a demo",
+      title: "Talk with us",
       description:
         "We learn about your catalog, age-check policy, and receiving workflow.",
     },

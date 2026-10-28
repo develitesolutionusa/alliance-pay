@@ -148,7 +148,7 @@ export const smokePage = {
   switching: [
     {
       timing: "Today",
-      title: "Book a demo",
+      title: "Talk with us",
       description:
         "We learn about your catalog, age-check policy, and how you manage display-case inventory.",
     },

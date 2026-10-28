@@ -23,7 +23,7 @@ export default function PricingPage() {
         eyebrow="Pricing"
         title="Transparent plans for independent retailers"
         description={pricingConfig.disclaimer}
-        primaryCta={{ label: "Book a Demo", href: "/book-demo" }}
+        primaryCta={{ label: "Contact us", href: "/contact" }}
         secondaryCta={{ label: "Contact sales", href: "/contact" }}
       />
       <Container className="grid gap-6 py-12 lg:grid-cols-3">

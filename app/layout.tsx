@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { ScreenSplash } from "@/components/brand/ScreenSplash";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import { Analytics } from "@/components/consent/Analytics";
 import { CookieConsent } from "@/components/consent/CookieConsent";
 import { SiteFooter } from "@/components/layout/SiteFooter";
@@ -41,10 +43,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
         <SmoothScroll>
+          <ScreenSplash />
           <SiteHeader />
           <main className="min-w-0 flex-1">{children}</main>
           <SiteFooter />
           <CookieConsent />
+          <ChatWidget />
           <Analytics />
         </SmoothScroll>
       </body>

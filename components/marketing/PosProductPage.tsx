@@ -4,7 +4,6 @@ import { ArrowRight, Check } from "lucide-react";
 import { FeatureIcon } from "@/components/icons/FeatureIcon";
 import { Container } from "@/components/ui/Container";
 import { PrimaryButton } from "@/components/ui/PrimaryButton";
-import { SecondaryButton } from "@/components/ui/SecondaryButton";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CTABanner } from "@/components/marketing/CTABanner";
@@ -42,8 +41,7 @@ export function PosProductPage() {
               </ScrollReveal>
               <ScrollReveal variant="up" delay={260}>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <PrimaryButton href="/get-started">Start Free Trial</PrimaryButton>
-                  <SecondaryButton href="/book-demo">Book a Demo</SecondaryButton>
+                  <PrimaryButton href="/contact">Start Free Trial</PrimaryButton>
                 </div>
               </ScrollReveal>
               <ScrollReveal variant="up" delay={320}>
@@ -143,7 +141,7 @@ export function PosProductPage() {
                 description="A predictable rhythm cashiers can learn on day one."
               />
               <div className="mt-8">
-                <PrimaryButton href="/book-demo">Book a Demo</PrimaryButton>
+                <PrimaryButton href="/contact">Contact us</PrimaryButton>
               </div>
             </div>
             <WorkflowTimeline steps={[...posPage.workflow]} />
@@ -268,7 +266,7 @@ export function PosProductPage() {
 
       <CTABanner
         title="Ready to try AlliancePay at the counter?"
-        description="Start a trial conversation or book a demo — we’ll walk through your lane hardware and tenders honestly."
+        description="Start a trial conversation or contact us — we’ll walk through your lane hardware and tenders honestly."
       />
     </>
   );

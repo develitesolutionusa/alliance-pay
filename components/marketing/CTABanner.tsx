@@ -1,7 +1,6 @@
 import { Store } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { PrimaryButton } from "@/components/ui/PrimaryButton";
-import { SecondaryButton } from "@/components/ui/SecondaryButton";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { cn } from "@/lib/utils";
 
@@ -9,18 +8,25 @@ type CTABannerProps = {
   title?: string;
   description?: string;
   className?: string;
+  cardClassName?: string;
 };
 
 export function CTABanner({
   title = "Ready to transform your store?",
   description = "Checkout, inventory, and staff tools for independent retailers in one platform.",
   className,
+  cardClassName,
 }: CTABannerProps) {
   return (
     <section className={cn("py-12 sm:py-16", className)} aria-labelledby="cta-banner-title">
       <Container>
         <ScrollReveal variant="up" duration={750}>
-          <div className="bg-banner-gradient relative flex flex-col gap-5 overflow-hidden rounded-[1.75rem] px-5 py-5 text-white shadow-md sm:px-7 sm:py-5 lg:flex-row lg:items-center lg:gap-8 lg:px-8">
+          <div
+            className={cn(
+              "bg-banner-gradient relative flex flex-col gap-5 overflow-hidden rounded-[1.75rem] px-5 py-5 text-white shadow-md sm:px-7 sm:py-5 lg:flex-row lg:items-center lg:gap-8 lg:px-8",
+              cardClassName,
+            )}
+          >
             <div
               className="pointer-events-none absolute -left-8 top-0 h-28 w-28 rounded-full bg-white/15 blur-2xl"
               aria-hidden
@@ -44,17 +50,11 @@ export function CTABanner({
             </div>
             <div className="relative flex shrink-0 flex-col gap-3 sm:flex-row lg:justify-end">
               <PrimaryButton
-                href="/get-started"
+                href="/contact"
                 className="bg-on-light focus-visible:!outline-white"
               >
                 Start Free Trial
               </PrimaryButton>
-              <SecondaryButton
-                href="/book-demo"
-                className="btn-on-brand focus-visible:!outline-white"
-              >
-                Book a Demo
-              </SecondaryButton>
             </div>
           </div>
         </ScrollReveal>

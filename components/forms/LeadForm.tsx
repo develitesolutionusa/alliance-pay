@@ -9,6 +9,7 @@ import {
   type LeadFieldErrors,
   type LeadIntent,
 } from "@/lib/leads/schema";
+import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export type LeadFormValues = {
@@ -107,7 +108,7 @@ export function LeadForm({
     } catch {
       setStatus("error");
       setStatusMessage(
-        "Network error. Check your connection and try again, or email hello@alliancepay.com.",
+        `Network error. Check your connection and try again, or email ${siteConfig.supportEmail}.`,
       );
     }
   }

@@ -30,6 +30,8 @@ npm run test:unit
 
 Copy `.env.example` to `.env.local`. Lead forms deliver via Resend and/or a webhook when those variables are set. Optional analytics (`NEXT_PUBLIC_GA_MEASUREMENT_ID`) shows a consent banner and loads only after accept.
 
+The site assistant calls Groq through the OpenAI SDK. Set `GROQ_API_KEY` (from the Groq console) on the server. `GROQ_MODEL` defaults to `openai/gpt-oss-120b`, which is on Groq's free plan. The key is never sent to the browser.
+
 ## Notes
 
 Pricing amounts, partner logos, and legal commitments stay unpublished until approved. Merchant login / self-serve auth remain pending until a POS auth milestone.

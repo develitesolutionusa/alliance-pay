@@ -27,7 +27,7 @@ export default function FeaturesPage() {
         eyebrow="Features"
         title="Everything you need in one platform"
         description="A practical AlliancePay feature set for independent retailers — checkout, stock, staff, loyalty, payments, and reporting without unverified claims."
-        primaryCta={{ label: "Book a Demo", href: "/book-demo" }}
+        primaryCta={{ label: "Contact us", href: "/contact" }}
         secondaryCta={{ label: "View Products", href: "/products" }}
       />
 
@@ -107,8 +107,8 @@ export default function FeaturesPage() {
           </p>
           <p className="text-center text-sm text-muted">
             {featurePages.length} features across counter, operations, and growth —{" "}
-            <Link href="/book-demo" className="font-semibold text-primary">
-              book a demo
+            <Link href="/contact" className="font-semibold text-primary">
+              contact us
             </Link>{" "}
             to map them to your store.
           </p>
@@ -117,7 +117,7 @@ export default function FeaturesPage() {
 
       <CTABanner
         title="See the features that matter for your store"
-        description="Book a demo and we will focus on the workflows you run every day — not a generic feature tour."
+        description="Contact us and we will focus on the workflows you run every day — not a generic feature tour."
       />
     </>
   );

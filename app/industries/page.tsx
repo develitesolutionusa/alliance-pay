@@ -18,7 +18,7 @@ export default function IndustriesPage() {
         eyebrow="Industries"
         title="Solutions for every retail industry"
         description="Workflows and guidance tailored to the stores AlliancePay is built to serve."
-        primaryCta={{ label: "Book a Demo", href: "/book-demo" }}
+        primaryCta={{ label: "Contact us", href: "/contact" }}
       />
       <Container className="grid gap-6 py-12 sm:grid-cols-2 lg:grid-cols-4">
         {industries.map((industry, index) => (

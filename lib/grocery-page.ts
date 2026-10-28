@@ -144,7 +144,7 @@ export const groceryPage = {
   switching: [
     {
       timing: "Today",
-      title: "Book a demo",
+      title: "Talk with us",
       description: "We learn about your store setup, inventory, and workflow.",
     },
     {

@@ -15,7 +15,16 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileWasOpen = useRef(false);
   const menuButtonIds = useId();
+
+  useEffect(() => {
+    if (mobileWasOpen.current && !mobileOpen) {
+      menuButtonRef.current?.focus();
+    }
+    mobileWasOpen.current = mobileOpen;
+  }, [mobileOpen]);
 
   useEffect(() => {
     function onPointerDown(event: MouseEvent) {
@@ -36,12 +45,12 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/95 backdrop-blur">
-      <Container className="flex h-16 items-center justify-between gap-4">
-        <Logo />
+      <Container className="flex h-[4.5rem] items-center gap-4">
+        <Logo priority />
 
         <nav
           ref={navRef}
-          className="hidden items-center gap-1 lg:flex"
+          className="ml-auto hidden items-center gap-1 lg:flex"
           aria-label="Primary"
         >
           {mainNav.map((item) => {
@@ -99,21 +108,15 @@ export function SiteHeader() {
               </div>
             );
           })}
+          <PrimaryButton href="/contact" className="ml-3">
+            Get Started
+          </PrimaryButton>
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
-          <Link
-            href="/login"
-            className="text-sm font-semibold text-foreground/80 hover:text-foreground"
-          >
-            Login
-          </Link>
-          <PrimaryButton href="/get-started">Get Started</PrimaryButton>
-        </div>
-
         <button
+          ref={menuButtonRef}
           type="button"
-          className="rounded-lg p-2 text-foreground hover:bg-surface lg:hidden"
+          className="ml-auto inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-foreground hover:bg-surface lg:hidden"
           aria-expanded={mobileOpen}
           aria-controls="mobile-navigation"
           aria-label="Open menu"

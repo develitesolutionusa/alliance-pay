@@ -1,7 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  serverExternalPackages: ["nodemailer"],
+  async redirects() {
+    return [
+      {
+        source: "/book-demo",
+        destination: "/contact",
+        permanent: true,
+      },
+      {
+        source: "/get-started",
+        destination: "/contact",
+        permanent: true,
+      },
+    ];
+  },
   experimental: {
     agentFeedback: true,
   },

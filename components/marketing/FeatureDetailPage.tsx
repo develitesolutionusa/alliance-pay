@@ -45,8 +45,7 @@ export function FeatureDetailPage({ content }: FeatureDetailPageProps) {
               </ScrollReveal>
               <ScrollReveal variant="up" delay={260}>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <PrimaryButton href="/get-started">Start Free Trial</PrimaryButton>
-                  <SecondaryButton href="/book-demo">Book a Demo</SecondaryButton>
+                  <PrimaryButton href="/contact">Start Free Trial</PrimaryButton>
                 </div>
               </ScrollReveal>
               <ScrollReveal variant="up" delay={320}>
@@ -160,7 +159,7 @@ export function FeatureDetailPage({ content }: FeatureDetailPageProps) {
                 description={content.workflowDescription}
               />
               <div className="mt-8">
-                <PrimaryButton href="/book-demo">Book a Demo</PrimaryButton>
+                <PrimaryButton href="/contact">Contact us</PrimaryButton>
               </div>
             </div>
             <WorkflowTimeline steps={[...content.workflow]} />
@@ -205,7 +204,7 @@ export function FeatureDetailPage({ content }: FeatureDetailPageProps) {
                 ))}
               </ul>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <PrimaryButton href="/get-started">
+                <PrimaryButton href="/contact">
                   Start Free Trial
                   <ArrowRight className="h-4 w-4" aria-hidden />
                 </PrimaryButton>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CalendarDays, HelpCircle, Mail } from "lucide-react";
+import { ArrowRight, HelpCircle, Mail } from "lucide-react";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { CTABanner } from "@/components/marketing/CTABanner";
 import { PageHero } from "@/components/marketing/PageHero";
@@ -18,7 +18,6 @@ export const metadata: Metadata = {
 
 const channelIcons = {
   email: Mail,
-  demo: CalendarDays,
   faq: HelpCircle,
 } as const;
 
@@ -30,7 +29,6 @@ export default function ContactPage() {
         eyebrow={contactContent.eyebrow}
         title={contactContent.title}
         description={contactContent.description}
-        primaryCta={{ label: "Book a Demo", href: "/book-demo" }}
         secondaryCta={{ label: "View FAQ", href: "/faq" }}
       />
 
@@ -124,10 +122,10 @@ export default function ContactPage() {
             id="contact-next-steps"
             eyebrow="Explore"
             title={contactContent.nextStepsTitle}
-            description="If you are still evaluating AlliancePay, these pages cover plans, trial status, and company context."
+            description="If you are still evaluating AlliancePay, these pages cover plans and company context."
             className="mb-8"
           />
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2">
             {contactContent.nextSteps.map((step, index) => (
               <ScrollReveal key={step.href} variant="up" delay={index * 70}>
                 <Link
@@ -158,7 +156,7 @@ export default function ContactPage() {
 
       <CTABanner
         title="Prefer a live walkthrough?"
-        description="Book a demo for your store type — grocery, convenience, liquor, or specialty retail."
+        description="Contact us for your store type — grocery, convenience, liquor, or specialty retail."
       />
     </>
   );

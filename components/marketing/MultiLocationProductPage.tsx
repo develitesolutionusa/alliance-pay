@@ -50,8 +50,7 @@ export function MultiLocationProductPage() {
               </ScrollReveal>
               <ScrollReveal variant="up" delay={260}>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <PrimaryButton href="/get-started">Start Free Trial</PrimaryButton>
-                  <SecondaryButton href="/book-demo">Book a Demo</SecondaryButton>
+                  <PrimaryButton href="/contact">Start Free Trial</PrimaryButton>
                 </div>
               </ScrollReveal>
               <ScrollReveal variant="up" delay={320}>
@@ -148,7 +147,7 @@ export function MultiLocationProductPage() {
                 description="A practical path for owners who need the group view and the store in front of them."
               />
               <div className="mt-8">
-                <PrimaryButton href="/book-demo">Book a Demo</PrimaryButton>
+                <PrimaryButton href="/contact">Contact us</PrimaryButton>
               </div>
             </div>
             <WorkflowTimeline steps={[...multiLocationPage.workflow]} />
@@ -284,7 +283,7 @@ export function MultiLocationProductPage() {
 
       <CTABanner
         title="Ready to run more than one store?"
-        description="Start a trial conversation or book a demo — we’ll walk through store switching, reporting, and stock transfers for your rollout."
+        description="Start a trial conversation or contact us — we’ll walk through store switching, reporting, and stock transfers for your rollout."
       />
     </>
   );
