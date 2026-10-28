@@ -89,9 +89,6 @@ export function MultiLocationProductPage() {
                     />
                   </div>
                 </div>
-                <p className="mt-3 text-center text-xs text-muted">
-                  Illustrative AlliancePay locations view · sample store data
-                </p>
               </div>
             </ScrollReveal>
           </div>
@@ -176,9 +173,6 @@ export function MultiLocationProductPage() {
                   className="object-cover object-[50%_40%]"
                 />
               </div>
-              <p className="mt-3 text-center text-xs text-muted">
-                Illustrative transfer · sample items and quantities
-              </p>
             </ScrollReveal>
             <ScrollReveal variant="right">
               <ul className="grid gap-2.5 sm:grid-cols-2">

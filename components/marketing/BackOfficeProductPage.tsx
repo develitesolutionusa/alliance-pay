@@ -86,9 +86,6 @@ export function BackOfficeProductPage() {
                     />
                   </div>
                 </div>
-                <p className="mt-3 text-center text-xs text-muted">
-                  Illustrative AlliancePay back office · sample store data
-                </p>
               </div>
             </ScrollReveal>
           </div>

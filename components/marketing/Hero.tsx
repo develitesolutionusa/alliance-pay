@@ -48,21 +48,21 @@ export function Hero({
       )}
     >
       <HeroBackgroundSlider slides={heroSlides} />
-      {/* Soft wash over the full frame so busy slides never punch through type */}
+      {/* Light wash on large screens only — mobile needs the photo visible */}
       <div
-        className="pointer-events-none absolute inset-0 bg-white/25 lg:bg-white/10"
+        className="pointer-events-none absolute inset-0 lg:bg-white/10"
         aria-hidden
       />
-      {/* Strong left/top scrim — keeps heading, CTAs, and benefits readable */}
+      {/* Scrim stays behind the copy, then opens so the photo shows */}
       <div
-        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,#ffffff_42%,rgb(255_255_255_/_0.92)_58%,rgb(255_255_255_/_0.55)_72%,rgb(255_255_255_/_0.18)_86%,transparent_100%)] lg:bg-[linear-gradient(90deg,#ffffff_0%,#ffffff_22%,rgb(255_255_255_/_0.97)_34%,rgb(255_255_255_/_0.78)_44%,rgb(255_255_255_/_0.35)_54%,rgb(255_255_255_/_0.08)_64%,transparent_72%)]"
+        className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,#ffffff_0%,rgb(255_255_255_/_0.96)_16%,rgb(255_255_255_/_0.78)_32%,rgb(255_255_255_/_0.28)_48%,transparent_62%)] lg:bg-[linear-gradient(90deg,#ffffff_0%,#ffffff_22%,rgb(255_255_255_/_0.97)_34%,rgb(255_255_255_/_0.78)_44%,rgb(255_255_255_/_0.35)_54%,rgb(255_255_255_/_0.08)_64%,transparent_72%)]"
         aria-hidden
       />
       <p className="pointer-events-none absolute bottom-14 right-4 z-10 rounded-full bg-white/95 px-3 py-1.5 text-xs font-semibold text-foreground shadow-sm sm:right-8 lg:bottom-5 lg:hidden">
         Built for real stores
       </p>
 
-      <Container className="relative z-10 flex min-h-[40rem] items-center py-16 sm:min-h-[44rem] lg:min-h-[40rem] lg:py-20">
+      <Container className="relative z-10 flex min-h-[40rem] items-start pt-12 pb-16 sm:min-h-[44rem] sm:pt-14 lg:min-h-[40rem] lg:items-center lg:py-20">
         <div className="relative min-w-0 max-w-xl">
           <div
             className="pointer-events-none absolute -inset-x-4 -inset-y-6 rounded-3xl bg-white/70 blur-xl sm:-inset-x-6 sm:-inset-y-8 lg:bg-white/55"

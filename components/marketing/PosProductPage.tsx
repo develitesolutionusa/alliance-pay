@@ -83,9 +83,6 @@ export function PosProductPage() {
                     />
                   </div>
                 </div>
-                <p className="mt-3 text-center text-xs text-muted">
-                  Illustrative AlliancePay POS lane · sample catalog data
-                </p>
               </div>
             </ScrollReveal>
           </div>

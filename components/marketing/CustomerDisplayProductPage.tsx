@@ -86,9 +86,6 @@ export function CustomerDisplayProductPage() {
                     />
                   </div>
                 </div>
-                <p className="mt-3 text-center text-xs text-muted">
-                  Illustrative AlliancePay customer display · sample cart data
-                </p>
               </div>
             </ScrollReveal>
           </div>

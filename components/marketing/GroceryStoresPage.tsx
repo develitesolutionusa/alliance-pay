@@ -219,9 +219,6 @@ export function GroceryStoresPage() {
                   />
                 </div>
               </div>
-              <p className="mt-3 text-center text-xs text-muted lg:text-left">
-                Illustrative grocery POS workstation · sample catalog data
-              </p>
             </ScrollReveal>
             <div>
               <SectionHeading

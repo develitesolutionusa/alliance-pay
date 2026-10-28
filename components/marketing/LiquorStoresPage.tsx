@@ -223,9 +223,6 @@ export function LiquorStoresPage() {
                   />
                 </div>
               </div>
-              <p className="mt-3 text-center text-xs text-muted lg:text-left">
-                Illustrative liquor POS counter · sample catalog data
-              </p>
             </ScrollReveal>
             <div>
               <SectionHeading

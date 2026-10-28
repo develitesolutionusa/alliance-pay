@@ -101,9 +101,6 @@ export function FeatureDetailPage({ content }: FeatureDetailPageProps) {
                     </div>
                   </div>
                 </div>
-                <p className="mt-3 text-center text-xs text-muted">
-                  Illustrative AlliancePay view · sample retail context
-                </p>
               </div>
             </ScrollReveal>
           </div>

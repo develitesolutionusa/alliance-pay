@@ -38,14 +38,6 @@ export default function PricingPage() {
           </ScrollReveal>
         ))}
       </Container>
-      {!pricingConfig.showAnnualToggle ? (
-        <Container className="-mt-4 pb-8">
-          <p className="text-center text-sm text-muted">
-            Monthly/annual toggle appears only when verified annual prices are
-            configured.
-          </p>
-        </Container>
-      ) : null}
 
       <section
         className="border-t border-border bg-surface py-14"

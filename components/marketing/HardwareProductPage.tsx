@@ -87,9 +87,6 @@ export function HardwareProductPage() {
                     />
                   </div>
                 </div>
-                <p className="mt-3 text-center text-xs text-muted">
-                  Illustrative AlliancePay lane · compatibility pending verification
-                </p>
               </div>
             </ScrollReveal>
           </div>
