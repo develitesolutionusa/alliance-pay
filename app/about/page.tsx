@@ -53,12 +53,12 @@ export default function AboutPage() {
                 </p>
               </ScrollReveal>
               <ScrollReveal variant="up" delay={100}>
-                <h1 className="text-gradient text-4xl font-bold tracking-tight transition duration-300 hover:drop-shadow-[0_0_18px_rgb(18_99_241_/_0.35)] sm:text-5xl">
+                <h1 className="text-gradient text-hero transition duration-300 hover:drop-shadow-[0_0_18px_rgb(18_99_241_/_0.35)]">
                   {aboutContent.title}
                 </h1>
               </ScrollReveal>
               <ScrollReveal variant="up" delay={180}>
-                <p className="mt-5 max-w-xl text-lg leading-8 text-foreground/80">
+                <p className="mt-5 max-w-xl text-lead text-foreground/80">
                   {aboutContent.description}
                 </p>
               </ScrollReveal>
@@ -115,7 +115,7 @@ export default function AboutPage() {
             />
             <div className="mt-8 space-y-5">
               {aboutContent.overview.paragraphs.slice(1).map((paragraph) => (
-                <p key={paragraph} className="text-base leading-7 text-muted">
+                <p key={paragraph} className="text-body text-muted">
                   {paragraph}
                 </p>
               ))}
@@ -142,7 +142,7 @@ export default function AboutPage() {
                 delay={index * 70}
               >
                 <div className="card-interactive h-full rounded-[var(--radius-card)] border border-border bg-white p-6 shadow-sm hover:border-primary/25">
-                  <h3 className="text-lg font-semibold text-foreground">
+                  <h3 className="text-subhead text-foreground">
                     {principle.title}
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-muted">

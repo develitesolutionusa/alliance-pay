@@ -94,7 +94,7 @@ export default function ContactPage() {
 
           <ScrollReveal variant="up" delay={120}>
             <div className="rounded-[1.25rem] border border-border bg-gradient-to-b from-white to-[#f4f8ff] p-6 shadow-sm sm:p-8">
-              <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-2xl">
+              <h2 className="text-title text-foreground">
                 {contactContent.formTitle}
               </h2>
               <p className="mt-2 text-sm leading-6 text-muted sm:text-base">

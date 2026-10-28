@@ -24,7 +24,7 @@ export function FormField({
 
   return (
     <div className={cn("space-y-1.5", className)}>
-      <label htmlFor={id} className="block text-sm font-medium text-foreground">
+      <label htmlFor={id} className="block text-label text-foreground">
         {label}
         {required ? (
           <span className="text-danger" aria-hidden>
@@ -49,4 +49,4 @@ export function FormField({
 }
 
 export const inputClassName =
-  "w-full rounded-[var(--radius-button)] border border-border bg-white px-3.5 py-2.5 text-sm text-foreground shadow-sm placeholder:text-muted/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-50";
+  "w-full rounded-[var(--radius-button)] border border-border bg-white px-3.5 py-2.5 text-input text-foreground shadow-sm placeholder:text-muted/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:opacity-50";

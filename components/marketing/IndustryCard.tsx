@@ -111,7 +111,7 @@ export function IndustryCard({
           <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
             <h3
               id={titleId}
-              className="text-xl font-bold tracking-tight text-white sm:text-2xl"
+              className="text-card text-white"
             >
               {title}
             </h3>
@@ -151,7 +151,7 @@ export function IndustryCard({
           <p className="text-[0.65rem] font-bold uppercase tracking-[0.18em] text-white/70">
             Built for
           </p>
-          <h3 className="mt-2 text-xl font-bold tracking-tight text-white sm:text-2xl">
+          <h3 className="mt-2 text-card text-white">
             {title}
           </h3>
           <p className="mt-4 flex-1 text-sm leading-6 text-white/85">
@@ -207,7 +207,7 @@ function DefaultIndustryCard({
           />
         </div>
         <div className="flex flex-1 flex-col p-5 sm:p-6">
-          <h3 className="text-gradient text-lg font-semibold">{title}</h3>
+          <h3 className="text-gradient text-subhead">{title}</h3>
           <p className="mt-2 flex-1 text-sm leading-6 text-muted">{description}</p>
           <Link
             href={href}

@@ -61,10 +61,10 @@ async function ResourceArticleContent({ params }: Props) {
             <p className="text-sm font-semibold uppercase tracking-wide text-primary">
               {article.category}
             </p>
-            <h1 className="text-gradient mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+            <h1 className="text-gradient mt-3 text-hero">
               {article.title}
             </h1>
-            <p className="mt-5 text-lg leading-8 text-muted">
+            <p className="mt-5 text-lead text-muted">
               {article.description}
             </p>
             <p className="mt-4 text-sm text-muted">
@@ -96,11 +96,11 @@ async function ResourceArticleContent({ params }: Props) {
                 <section aria-labelledby={`section-${index}`}>
                   <h2
                     id={`section-${index}`}
-                    className="text-2xl font-semibold tracking-tight text-foreground"
+                    className="text-title text-foreground"
                   >
                     {section.heading}
                   </h2>
-                  <div className="mt-4 space-y-4 text-base leading-7 text-muted">
+                  <div className="mt-4 space-y-4 text-body text-muted">
                     {section.paragraphs.map((paragraph) => (
                       <p key={paragraph.slice(0, 48)}>{paragraph}</p>
                     ))}

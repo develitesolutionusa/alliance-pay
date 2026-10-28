@@ -33,7 +33,7 @@ export function FeatureCard({
           <FeatureIcon name={icon} className="h-5 w-5" />
         </span>
         <span className="min-w-0">
-          <h3 className="text-gradient text-base font-semibold">{title}</h3>
+          <h3 className="text-gradient text-subhead-sm">{title}</h3>
           <span className="mt-1 block text-sm leading-6 text-muted">
             {description}
           </span>
@@ -57,7 +57,7 @@ export function FeatureCard({
       <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary text-white shadow-sm shadow-primary/25">
         <FeatureIcon name={icon} className="h-6 w-6" />
       </div>
-      <h3 className="text-gradient text-lg font-semibold">{title}</h3>
+      <h3 className="text-gradient text-subhead">{title}</h3>
       <p className="mt-2 flex-1 text-sm leading-6 text-muted">{description}</p>
       <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
         Learn more

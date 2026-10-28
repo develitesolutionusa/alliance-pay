@@ -39,11 +39,11 @@ export default function HomePage() {
           <ScrollReveal variant="up" className="mx-auto mb-10 max-w-2xl text-center">
             <h2
               id="features-heading"
-              className="text-gradient text-3xl font-bold tracking-tight sm:text-4xl"
+              className="text-gradient text-section"
             >
               Everything you need to run your store
             </h2>
-            <p className="mt-4 text-base leading-7 text-muted">
+            <p className="mt-4 text-body text-muted">
               From checkout to inventory, staff, loyalty, and multi-location
               reporting.
             </p>
@@ -81,16 +81,16 @@ export default function HomePage() {
       >
         <Container>
           <ScrollReveal variant="up" className="mx-auto mb-10 max-w-2xl text-center">
-            <p className="text-gradient-brand text-sm font-semibold tracking-wide">
+            <p className="text-gradient-brand text-eyebrow">
               Industries
             </p>
             <h2
               id="industries-heading"
-              className="text-gradient mt-3 text-3xl font-bold tracking-tight sm:text-4xl"
+              className="text-gradient mt-3 text-section"
             >
               Built for every type of retail store
             </h2>
-            <p className="mt-4 text-base leading-7 text-muted">
+            <p className="mt-4 text-body text-muted">
               Workflows for grocery, convenience, liquor, and smoke shops.
             </p>
           </ScrollReveal>
@@ -122,11 +122,11 @@ export default function HomePage() {
           <ScrollReveal variant="up" className="mx-auto mb-10 max-w-2xl text-center">
             <h2
               id="value-heading"
-              className="text-gradient text-3xl font-bold tracking-tight sm:text-4xl"
+              className="text-gradient text-section"
             >
               Why retailers choose AlliancePay
             </h2>
-            <p className="mt-4 text-base leading-7 text-muted">
+            <p className="mt-4 text-body text-muted">
               One platform that covers the counter, the back office, and the
               support you need to keep every shift running smoothly.
             </p>

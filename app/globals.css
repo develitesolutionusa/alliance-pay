@@ -37,6 +37,59 @@
     rgb(18 99 241 / 0.55)
   );
   --gradient-soft: linear-gradient(145deg, #ffffff 0%, #d7e6ff 100%);
+
+  /* Typography scale. Sizes are fluid where headings change across viewports. */
+  --type-hero-size: clamp(2.05rem, 0.65rem + 4.6vw, 3.25rem);
+  --type-hero-leading: 1.08;
+  --type-hero-tracking: -0.032em;
+  --type-section-size: clamp(1.75rem, 1.15rem + 1.8vw, 2.375rem);
+  --type-section-leading: 1.14;
+  --type-section-tracking: -0.026em;
+  --type-title-size: clamp(1.375rem, 1.1rem + 0.9vw, 1.625rem);
+  --type-title-leading: 1.25;
+  --type-title-tracking: -0.022em;
+  --type-card-size: clamp(1.25rem, 1.05rem + 0.65vw, 1.5rem);
+  --type-card-leading: 1.22;
+  --type-card-tracking: -0.022em;
+  --type-banner-size: clamp(1.25rem, 1.08rem + 0.7vw, 1.5rem);
+  --type-banner-leading: 1.25;
+  --type-banner-tracking: -0.02em;
+  --type-stat-size: clamp(1.875rem, 1.5rem + 1.1vw, 2.25rem);
+  --type-stat-leading: 1.05;
+  --type-stat-tracking: -0.03em;
+  --type-subhead-size: 1.125rem;
+  --type-subhead-leading: 1.35;
+  --type-subhead-tracking: -0.016em;
+  --type-subhead-sm-size: 1rem;
+  --type-subhead-sm-leading: 1.4;
+  --type-subhead-sm-tracking: -0.014em;
+  --type-lead-size: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --type-lead-leading: 1.7;
+  --type-lead-tracking: -0.011em;
+  --type-body-size: 1rem;
+  --type-body-leading: 1.7;
+  --type-body-tracking: -0.006em;
+  --type-nav-size: 0.9375rem;
+  --type-nav-leading: 1.4;
+  --type-nav-tracking: -0.011em;
+  --type-nav-mobile-size: 1rem;
+  --type-nav-mobile-leading: 1.45;
+  --type-nav-mobile-tracking: -0.012em;
+  --type-button-size: 0.9375rem;
+  --type-button-leading: 1.25;
+  --type-button-tracking: -0.012em;
+  --type-button-lg-size: 1rem;
+  --type-button-lg-leading: 1.25;
+  --type-button-lg-tracking: -0.014em;
+  --type-eyebrow-size: 0.8125rem;
+  --type-eyebrow-leading: 1.45;
+  --type-eyebrow-tracking: 0.04em;
+  --type-label-size: 0.875rem;
+  --type-label-leading: 1.45;
+  --type-label-tracking: -0.006em;
+  --type-input-size: 1rem;
+  --type-input-leading: 1.5;
+  --type-input-tracking: -0.006em;
 }
 
 @theme inline {
@@ -50,7 +103,75 @@
   --color-border: var(--border);
   --color-success: var(--success);
   --color-danger: var(--danger);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --text-hero: var(--type-hero-size);
+  --text-hero--line-height: var(--type-hero-leading);
+  --text-hero--letter-spacing: var(--type-hero-tracking);
+  --text-hero--font-weight: 800;
+  --text-section: var(--type-section-size);
+  --text-section--line-height: var(--type-section-leading);
+  --text-section--letter-spacing: var(--type-section-tracking);
+  --text-section--font-weight: 700;
+  --text-title: var(--type-title-size);
+  --text-title--line-height: var(--type-title-leading);
+  --text-title--letter-spacing: var(--type-title-tracking);
+  --text-title--font-weight: 700;
+  --text-card: var(--type-card-size);
+  --text-card--line-height: var(--type-card-leading);
+  --text-card--letter-spacing: var(--type-card-tracking);
+  --text-card--font-weight: 700;
+  --text-banner: var(--type-banner-size);
+  --text-banner--line-height: var(--type-banner-leading);
+  --text-banner--letter-spacing: var(--type-banner-tracking);
+  --text-banner--font-weight: 700;
+  --text-stat: var(--type-stat-size);
+  --text-stat--line-height: var(--type-stat-leading);
+  --text-stat--letter-spacing: var(--type-stat-tracking);
+  --text-stat--font-weight: 700;
+  --text-subhead: var(--type-subhead-size);
+  --text-subhead--line-height: var(--type-subhead-leading);
+  --text-subhead--letter-spacing: var(--type-subhead-tracking);
+  --text-subhead--font-weight: 600;
+  --text-subhead-sm: var(--type-subhead-sm-size);
+  --text-subhead-sm--line-height: var(--type-subhead-sm-leading);
+  --text-subhead-sm--letter-spacing: var(--type-subhead-sm-tracking);
+  --text-subhead-sm--font-weight: 600;
+  --text-lead: var(--type-lead-size);
+  --text-lead--line-height: var(--type-lead-leading);
+  --text-lead--letter-spacing: var(--type-lead-tracking);
+  --text-lead--font-weight: 400;
+  --text-body: var(--type-body-size);
+  --text-body--line-height: var(--type-body-leading);
+  --text-body--letter-spacing: var(--type-body-tracking);
+  --text-body--font-weight: 400;
+  --text-nav: var(--type-nav-size);
+  --text-nav--line-height: var(--type-nav-leading);
+  --text-nav--letter-spacing: var(--type-nav-tracking);
+  --text-nav--font-weight: 500;
+  --text-nav-mobile: var(--type-nav-mobile-size);
+  --text-nav-mobile--line-height: var(--type-nav-mobile-leading);
+  --text-nav-mobile--letter-spacing: var(--type-nav-mobile-tracking);
+  --text-nav-mobile--font-weight: 600;
+  --text-button: var(--type-button-size);
+  --text-button--line-height: var(--type-button-leading);
+  --text-button--letter-spacing: var(--type-button-tracking);
+  --text-button--font-weight: 600;
+  --text-button-lg: var(--type-button-lg-size);
+  --text-button-lg--line-height: var(--type-button-lg-leading);
+  --text-button-lg--letter-spacing: var(--type-button-lg-tracking);
+  --text-button-lg--font-weight: 600;
+  --text-eyebrow: var(--type-eyebrow-size);
+  --text-eyebrow--line-height: var(--type-eyebrow-leading);
+  --text-eyebrow--letter-spacing: var(--type-eyebrow-tracking);
+  --text-eyebrow--font-weight: 600;
+  --text-label: var(--type-label-size);
+  --text-label--line-height: var(--type-label-leading);
+  --text-label--letter-spacing: var(--type-label-tracking);
+  --text-label--font-weight: 500;
+  --text-input: var(--type-input-size);
+  --text-input--line-height: var(--type-input-leading);
+  --text-input--letter-spacing: var(--type-input-tracking);
+  --text-input--font-weight: 400;
   --radius-card: var(--radius-card);
   --radius-button: var(--radius-button);
   --shadow-sm: var(--shadow-sm);
@@ -80,7 +201,51 @@
   body {
     background: var(--background);
     color: var(--text);
-    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-sans);
+    font-size: var(--type-body-size);
+    font-weight: 400;
+    line-height: var(--type-body-leading);
+    letter-spacing: var(--type-body-tracking);
+    font-synthesis: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+    overflow-wrap: break-word;
+  }
+
+  h1 {
+    font-weight: 800;
+    line-height: var(--type-hero-leading);
+    letter-spacing: var(--type-hero-tracking);
+  }
+
+  h2 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.022em;
+  }
+
+  h3,
+  h4 {
+    font-weight: 600;
+    line-height: 1.35;
+    letter-spacing: -0.015em;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+    letter-spacing: inherit;
   }
 
   :focus-visible {

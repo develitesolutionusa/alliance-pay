@@ -58,7 +58,7 @@ export function GroceryStoresPage() {
                 </p>
               </ScrollReveal>
               <ScrollReveal variant="up" delay={120}>
-                <h1 className="text-gradient text-4xl font-bold tracking-tight drop-shadow-[0_1px_0_rgb(255_255_255_/_0.85)] sm:text-5xl lg:text-[3.25rem] lg:leading-[1.08]">
+                <h1 className="text-gradient text-hero drop-shadow-[0_1px_0_rgb(255_255_255_/_0.85)]">
                   {groceryPage.title}{" "}
                   <span className="text-gradient-accent">
                     {groceryPage.titleAccent}
@@ -66,18 +66,18 @@ export function GroceryStoresPage() {
                 </h1>
               </ScrollReveal>
               <ScrollReveal variant="up" delay={200}>
-                <p className="mt-5 max-w-[42ch] text-lg leading-8 text-foreground/75">
+                <p className="mt-5 max-w-[42ch] text-lead text-foreground/75">
                   {groceryPage.description}
                 </p>
               </ScrollReveal>
               <ScrollReveal variant="up" delay={280}>
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <PrimaryButton href="/contact" className="px-6 py-3 text-base">
+                  <PrimaryButton href="/contact" className="px-6 py-3 text-button-lg">
                     Start Free Trial
                   </PrimaryButton>
                   <SecondaryButton
                     href="#how-it-works"
-                    className="bg-white/95 px-6 py-3 text-base"
+                    className="bg-white/95 px-6 py-3 text-button-lg"
                   >
                     See how it works
                   </SecondaryButton>
@@ -141,7 +141,7 @@ export function GroceryStoresPage() {
                     />
                   </div>
                   <div className="relative z-[1] flex flex-1 flex-col p-5">
-                    <h3 className="text-base font-semibold text-foreground transition-colors group-hover:text-primary">
+                    <h3 className="text-subhead-sm text-foreground transition-colors group-hover:text-primary">
                       {store.title}
                     </h3>
                     <p className="mt-2 text-sm leading-6 text-muted">
@@ -188,7 +188,7 @@ export function GroceryStoresPage() {
                   <span className="icon-well mb-4 flex h-11 w-11 items-center justify-center rounded-xl text-primary transition duration-300 group-hover:scale-110 group-hover:shadow-[0_0_24px_-2px_rgb(18_99_241_/_0.65)]">
                     <FeatureIcon name={item.icon} className="h-5 w-5" />
                   </span>
-                  <h3 className="text-base font-semibold leading-6 text-foreground transition-colors group-hover:text-primary">
+                  <h3 className="text-subhead-sm text-foreground transition-colors group-hover:text-primary">
                     {item.problem}
                   </h3>
                   <p className="mt-3 text-sm leading-6 text-muted">{item.solution}</p>
@@ -238,7 +238,7 @@ export function GroceryStoresPage() {
                         <Check className="h-3.5 w-3.5" aria-hidden />
                       </span>
                       <div>
-                        <h3 className="text-base font-semibold text-foreground transition-colors group-hover:text-primary">
+                        <h3 className="text-subhead-sm text-foreground transition-colors group-hover:text-primary">
                           {point.title}
                         </h3>
                         <p className="mt-1 text-sm leading-6 text-muted">
@@ -309,7 +309,7 @@ export function GroceryStoresPage() {
                   <p className="text-xs font-semibold text-muted">
                     Step {index + 1}
                   </p>
-                  <h3 className="mt-1 text-lg font-semibold text-foreground transition-colors group-hover:text-primary">
+                  <h3 className="mt-1 text-subhead text-foreground transition-colors group-hover:text-primary">
                     {step.title}
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-muted">

@@ -235,10 +235,10 @@ export function WorkflowTimeline({
               >
                 Step {index + 1}
               </p>
-              <h3 className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-[1.65rem]">
+              <h3 className="mt-2 text-title text-foreground">
                 {step.title}
               </h3>
-              <p className="mt-3 max-w-xl text-base leading-7 text-muted">
+              <p className="mt-3 max-w-xl text-body text-muted">
                 {step.description}
               </p>
             </div>

@@ -19,7 +19,14 @@ type ButtonAsLink = CommonProps & {
 export type PrimaryButtonProps = ButtonAsButton | ButtonAsLink;
 
 const baseClass =
-  "inline-flex items-center justify-center gap-2 rounded-[var(--radius-button)] bg-brand-gradient px-5 py-2.5 text-sm font-semibold text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50";
+  "inline-flex items-center justify-center gap-2 rounded-[var(--radius-button)] bg-brand-gradient px-5 py-2.5 text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary disabled:pointer-events-none disabled:opacity-50";
+
+function buttonClass(className?: string) {
+  const typeClass = className?.includes("text-button-lg")
+    ? "text-button-lg"
+    : "text-button";
+  return cn(baseClass, typeClass, className);
+}
 
 export function PrimaryButton(props: PrimaryButtonProps) {
   const { children, className } = props;
@@ -30,7 +37,7 @@ export function PrimaryButton(props: PrimaryButtonProps) {
       return (
         <a
           href={href}
-          className={cn(baseClass, className)}
+          className={buttonClass(className)}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -39,7 +46,7 @@ export function PrimaryButton(props: PrimaryButtonProps) {
       );
     }
     return (
-      <Link href={href} className={cn(baseClass, className)}>
+      <Link href={href} className={buttonClass(className)}>
         {children}
       </Link>
     );
@@ -47,7 +54,7 @@ export function PrimaryButton(props: PrimaryButtonProps) {
 
   const buttonProps = props as ButtonAsButton;
   return (
-    <button type="button" {...buttonProps} className={cn(baseClass, className)}>
+    <button type="button" {...buttonProps} className={buttonClass(className)}>
       {children}
     </button>
   );

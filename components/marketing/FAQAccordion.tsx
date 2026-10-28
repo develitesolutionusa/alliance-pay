@@ -33,7 +33,7 @@ export function FAQAccordion({ items, className }: FAQAccordionProps) {
                 type="button"
                 aria-expanded={isOpen}
                 aria-controls={panelId}
-                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-base font-semibold text-foreground hover:bg-surface"
+                className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left text-subhead-sm text-foreground hover:bg-surface"
                 onClick={() =>
                   setOpenId((current) =>
                     current === item.question ? null : item.question,

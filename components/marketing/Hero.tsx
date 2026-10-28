@@ -75,18 +75,18 @@ export function Hero({
               </p>
             </ScrollReveal>
             <ScrollReveal variant="up" delay={120}>
-              <h1 className="text-gradient text-4xl font-bold tracking-tight drop-shadow-[0_1px_0_rgb(255_255_255_/_0.85)] sm:text-5xl lg:text-[3.25rem] lg:leading-[1.08]">
+              <h1 className="text-gradient text-hero drop-shadow-[0_1px_0_rgb(255_255_255_/_0.85)]">
                 {title}
               </h1>
             </ScrollReveal>
             <ScrollReveal variant="up" delay={200}>
-              <p className="mt-5 max-w-[42ch] text-lg leading-8 text-foreground/75">
+              <p className="mt-5 max-w-[42ch] text-lead text-foreground/75">
                 {description}
               </p>
             </ScrollReveal>
             <ScrollReveal variant="up" delay={280}>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <PrimaryButton href="/contact" className="px-6 py-3 text-base">
+                <PrimaryButton href="/contact" className="px-6 py-3 text-button-lg">
                   Start Free Trial
                 </PrimaryButton>
               </div>

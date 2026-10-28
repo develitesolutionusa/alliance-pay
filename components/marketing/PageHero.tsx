@@ -43,13 +43,13 @@ export function PageHero({
         >
           {eyebrow ? (
             <ScrollReveal variant="up" delay={40}>
-              <p className="text-gradient-brand mb-3 text-sm font-semibold tracking-wide">
+              <p className="text-gradient-brand mb-3 text-eyebrow">
                 {eyebrow}
               </p>
             </ScrollReveal>
           ) : null}
           <ScrollReveal variant="up" delay={100}>
-            <h1 className="text-gradient text-4xl font-bold tracking-tight sm:text-5xl">
+            <h1 className="text-gradient text-hero">
               {title}
             </h1>
           </ScrollReveal>
@@ -57,7 +57,7 @@ export function PageHero({
             <ScrollReveal variant="up" delay={180}>
               <p
                 className={cn(
-                  "mt-5 text-lg leading-8 text-muted",
+                  "mt-5 text-lead text-muted",
                   centered && "mx-auto max-w-2xl",
                 )}
               >

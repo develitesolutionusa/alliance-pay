@@ -19,7 +19,7 @@ export function RelatedLinks({ items, className }: RelatedLinksProps) {
           href={item.href}
           className="card-surface card-interactive group flex flex-col rounded-[var(--radius-card)] p-5 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
         >
-          <h3 className="text-base font-semibold text-foreground">{item.title}</h3>
+          <h3 className="text-subhead-sm text-foreground">{item.title}</h3>
           <p className="mt-2 flex-1 text-sm leading-6 text-muted">
             {item.description}
           </p>

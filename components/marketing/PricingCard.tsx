@@ -32,10 +32,10 @@ export function PricingCard({
           Recommended
         </span>
       ) : null}
-      <h3 className="text-gradient text-xl font-bold">{plan.name}</h3>
+      <h3 className="text-gradient text-card">{plan.name}</h3>
       <p className="mt-2 text-sm text-muted">{plan.description}</p>
       <div className="mt-6">
-        <p className="text-gradient text-4xl font-bold tracking-tight">
+        <p className="text-gradient text-stat">
           {price}
           {showPeriod ? (
             <span className="text-base font-medium text-muted">

@@ -40,7 +40,7 @@ export function ProductCard({
         </div>
       ) : null}
       <div className="flex flex-1 flex-col p-6">
-        <h2 className="text-gradient text-lg font-semibold">{title}</h2>
+        <h2 className="text-gradient text-subhead">{title}</h2>
         <p className="mt-2 flex-1 text-sm leading-6 text-muted">{description}</p>
         <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-primary">
           Learn more

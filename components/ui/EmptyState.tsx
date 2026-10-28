@@ -23,7 +23,7 @@ export function EmptyState({
         className,
       )}
     >
-      <h2 className="text-lg font-semibold text-foreground">{title}</h2>
+      <h2 className="text-subhead text-foreground">{title}</h2>
       <p className="mx-auto mt-2 max-w-md text-sm text-muted">{description}</p>
       {actionLabel && actionHref ? (
         <PrimaryButton href={actionHref} className="mt-6">

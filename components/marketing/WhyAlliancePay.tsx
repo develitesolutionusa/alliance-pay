@@ -19,10 +19,10 @@ export function WhyAlliancePay({ className }: WhyAlliancePayProps) {
             <p className="text-gradient-brand text-sm font-semibold">
               {whyAlliancePay.eyebrow}
             </p>
-            <h2 className="text-gradient mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-gradient mt-3 text-section">
               {whyAlliancePay.title}
             </h2>
-            <p className="mt-4 max-w-md text-base leading-7 text-muted">
+            <p className="mt-4 max-w-md text-body text-muted">
               {whyAlliancePay.description}
             </p>
             <Link

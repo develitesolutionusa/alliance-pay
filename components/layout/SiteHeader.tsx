@@ -63,7 +63,7 @@ export function SiteHeader() {
                 <Link
                   key={item.title}
                   href={item.href}
-                  className="rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-surface hover:text-foreground"
+                  className="rounded-lg px-3 py-2 text-nav text-foreground/80 hover:bg-surface hover:text-foreground"
                 >
                   {item.title}
                 </Link>
@@ -76,7 +76,7 @@ export function SiteHeader() {
                   id={buttonId}
                   type="button"
                   className={cn(
-                    "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-foreground/80 hover:bg-surface hover:text-foreground",
+                    "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-nav text-foreground/80 hover:bg-surface hover:text-foreground",
                     isOpen && "bg-surface text-foreground",
                   )}
                   aria-expanded={isOpen}

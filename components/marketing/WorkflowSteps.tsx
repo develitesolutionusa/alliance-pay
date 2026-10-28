@@ -16,7 +16,7 @@ export function WorkflowSteps({ steps, className }: WorkflowStepsProps) {
           <p className="text-sm font-semibold text-primary">
             Step {index + 1}
           </p>
-          <h3 className="mt-2 text-lg font-semibold text-foreground">
+          <h3 className="mt-2 text-subhead text-foreground">
             {step.title}
           </h3>
           <p className="mt-2 text-sm leading-6 text-muted">{step.description}</p>

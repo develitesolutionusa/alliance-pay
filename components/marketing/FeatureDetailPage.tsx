@@ -28,18 +28,18 @@ export function FeatureDetailPage({ content }: FeatureDetailPageProps) {
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-14">
             <div className="min-w-0">
               <ScrollReveal variant="up" delay={40}>
-                <p className="text-gradient-brand mb-3 text-sm font-semibold tracking-wide">
+                <p className="text-gradient-brand mb-3 text-eyebrow">
                   {content.eyebrow}
                 </p>
               </ScrollReveal>
               <ScrollReveal variant="up" delay={100}>
-                <h1 className="text-gradient text-4xl font-bold tracking-tight sm:text-5xl">
+                <h1 className="text-gradient text-hero">
                   {content.title}{" "}
                   <span className="text-gradient-accent">{content.titleAccent}</span>
                 </h1>
               </ScrollReveal>
               <ScrollReveal variant="up" delay={180}>
-                <p className="mt-5 max-w-[42ch] text-lg leading-8 text-muted">
+                <p className="mt-5 max-w-[42ch] text-lead text-muted">
                   {content.description}
                 </p>
               </ScrollReveal>
@@ -132,7 +132,7 @@ export function FeatureDetailPage({ content }: FeatureDetailPageProps) {
                   <span className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl bg-primary text-white shadow-sm shadow-primary/25">
                     <FeatureIcon name={capability.icon} className="h-5 w-5" />
                   </span>
-                  <h3 className="text-lg font-semibold text-foreground">
+                  <h3 className="text-subhead text-foreground">
                     {capability.title}
                   </h3>
                   <p className="mt-2 text-sm leading-6 text-muted">

@@ -37,7 +37,7 @@ export function TestimonialCard({
         className,
       )}
     >
-      <p className="text-base leading-7 text-foreground">&ldquo;{quote}&rdquo;</p>
+      <p className="text-body text-foreground">&ldquo;{quote}&rdquo;</p>
       <footer className="mt-4 text-sm">
         <cite className="not-italic font-semibold text-foreground">{name}</cite>
         <span className="text-muted"> · {role}</span>

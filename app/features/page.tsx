@@ -80,7 +80,7 @@ export default function FeaturesPage() {
                         </span>
                       </div>
                       <div className="flex flex-1 flex-col p-6">
-                        <h2 className="text-gradient text-lg font-semibold">
+                        <h2 className="text-gradient text-subhead">
                           {feature.title}
                         </h2>
                         <p className="mt-2 flex-1 text-sm leading-6 text-muted">

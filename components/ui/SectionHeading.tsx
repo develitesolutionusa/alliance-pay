@@ -30,21 +30,21 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className="text-gradient-brand mb-3 text-sm font-semibold tracking-wide">
+        <p className="text-gradient-brand mb-3 text-eyebrow">
           {eyebrow}
         </p>
       ) : null}
       <h2
         id={id}
         className={cn(
-          "text-gradient text-3xl font-bold tracking-tight sm:text-4xl",
+          "text-gradient text-section",
           titleClassName,
         )}
       >
         {title}
       </h2>
       {description ? (
-        <p className="mt-4 text-base leading-7 text-muted sm:text-lg">
+        <p className="mt-4 text-body text-muted sm:text-lg">
           {description}
         </p>
       ) : null}

@@ -31,7 +31,7 @@ export function ResourceCard({ article, className }: ResourceCardProps) {
         <p className="text-xs font-semibold uppercase tracking-wide text-primary">
           {article.category}
         </p>
-        <h2 className="mt-2 text-lg font-semibold text-foreground">
+        <h2 className="mt-2 text-subhead text-foreground">
           {article.title}
         </h2>
         <p className="mt-2 flex-1 text-sm leading-6 text-muted">

@@ -15,8 +15,8 @@ export function LegalNotice({ title, paragraphs, className }: LegalNoticeProps) 
         className,
       )}
     >
-      <h2 className="text-lg font-semibold text-foreground">{title}</h2>
-      <div className="mt-4 space-y-4 text-sm leading-7 text-muted">
+      <h2 className="text-subhead text-foreground">{title}</h2>
+      <div className="mt-4 space-y-4 text-body text-muted">
         {paragraphs.map((paragraph) => (
           <p key={paragraph.slice(0, 40)}>{paragraph}</p>
         ))}

@@ -122,7 +122,7 @@ export function MobileNav({ open, onClose, items }: MobileNavProps) {
                     <Link
                       href={item.href}
                       onClick={onClose}
-                      className="block rounded-lg px-2 py-3 text-base font-semibold text-foreground hover:bg-surface"
+                      className="block rounded-lg px-2 py-3 text-nav-mobile text-foreground hover:bg-surface"
                     >
                       {item.title}
                     </Link>
@@ -136,7 +136,7 @@ export function MobileNav({ open, onClose, items }: MobileNavProps) {
                     <Link
                       href={item.href}
                       onClick={onClose}
-                      className="min-w-0 flex-1 rounded-lg px-2 py-3 text-base font-semibold text-foreground hover:bg-surface"
+                      className="min-w-0 flex-1 rounded-lg px-2 py-3 text-nav-mobile text-foreground hover:bg-surface"
                     >
                       {item.title}
                     </Link>

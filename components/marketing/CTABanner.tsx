@@ -40,7 +40,7 @@ export function CTABanner({
                 <Store className="h-6 w-6" aria-hidden />
               </span>
               <div className="min-w-0">
-                <h2 id="cta-banner-title" className="text-xl font-bold tracking-tight sm:text-2xl">
+                <h2 id="cta-banner-title" className="text-banner">
                   {title}
                 </h2>
                 <p className="mt-1 text-sm leading-6 text-white/80 sm:text-[0.95rem]">

@@ -18,7 +18,7 @@ export function CheckList({ items, className }: CheckListProps) {
             <Check className="h-4 w-4" aria-hidden />
           </span>
           <div>
-            <h3 className="text-base font-semibold text-foreground">
+            <h3 className="text-subhead-sm text-foreground">
               {item.title}
             </h3>
             <p className="mt-1 text-sm leading-6 text-muted">

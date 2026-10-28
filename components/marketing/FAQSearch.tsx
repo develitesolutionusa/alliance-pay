@@ -38,7 +38,7 @@ export function FAQSearch({ items }: FAQSearchProps) {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="Search questions"
-            className="w-full rounded-[var(--radius-button)] border border-border bg-white py-3 pl-10 pr-4 text-sm text-foreground shadow-sm outline-none focus-visible:ring-2 focus-visible:ring-primary"
+            className="w-full rounded-[var(--radius-button)] border border-border bg-white py-3 pl-10 pr-4 text-input text-foreground shadow-sm outline-none focus-visible:ring-2 focus-visible:ring-primary"
           />
         </span>
       </label>
