@@ -18,9 +18,9 @@ const PATH_PATTERN =
 function TypingIndicator() {
   return (
     <span className="chat-typing inline-flex items-center gap-1 py-1" aria-label="Thinking">
-      <span className="inline-block h-1.5 w-1.5 rounded-full bg-muted" />
-      <span className="inline-block h-1.5 w-1.5 rounded-full bg-muted" />
-      <span className="inline-block h-1.5 w-1.5 rounded-full bg-muted" />
+      <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
+      <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
+      <span className="inline-block h-1.5 w-1.5 rounded-full bg-primary" />
     </span>
   );
 }
@@ -68,17 +68,48 @@ export function ChatWidget() {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [refreshSpin, setRefreshSpin] = useState(false);
+  const [teaser, setTeaser] = useState(false);
+  const teaserDismissed = useRef(false);
 
   useEffect(() => {
-    if (open) {
-      setPanelRendered(true);
+    if (!open) {
+      setPanelShown(false);
+      if (prefersReducedMotion()) {
+        setPanelRendered(false);
+        return;
+      }
+      const timer = window.setTimeout(() => setPanelRendered(false), 420);
+      return () => window.clearTimeout(timer);
+    }
+
+    setPanelRendered(true);
+    if (prefersReducedMotion()) {
       setPanelShown(true);
       return;
     }
 
     setPanelShown(false);
-    const delay = prefersReducedMotion() ? 0 : 320;
-    const timer = window.setTimeout(() => setPanelRendered(false), delay);
+    let inner = 0;
+    const outer = window.requestAnimationFrame(() => {
+      inner = window.requestAnimationFrame(() => setPanelShown(true));
+    });
+    return () => {
+      window.cancelAnimationFrame(outer);
+      window.cancelAnimationFrame(inner);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    if (open) {
+      teaserDismissed.current = true;
+      setTeaser(false);
+      return;
+    }
+    if (teaserDismissed.current) return;
+    const timer = window.setTimeout(
+      () => setTeaser(true),
+      prefersReducedMotion() ? 400 : 3200,
+    );
     return () => window.clearTimeout(timer);
   }, [open]);
 
@@ -195,7 +226,7 @@ export function ChatWidget() {
   }
 
   return (
-    <div className="pointer-events-none fixed bottom-5 right-4 z-[55] flex flex-col items-end gap-3 sm:right-6">
+    <div className="pointer-events-none fixed bottom-5 right-4 z-[55] sm:right-6">
       {panelRendered ? (
         <section
           id={panelId}
@@ -203,11 +234,11 @@ export function ChatWidget() {
           aria-modal="false"
           aria-labelledby={titleId}
           className={cn(
-            "chat-panel pointer-events-auto flex h-[min(32rem,calc(100dvh-7rem))] w-[min(24rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-[var(--radius-card)] border border-border bg-white shadow-md",
+            "chat-panel pointer-events-auto absolute right-0 bottom-[calc(100%+0.75rem)] flex h-[min(32rem,calc(100dvh-7rem))] w-[min(24rem,calc(100vw-2rem))] flex-col overflow-hidden rounded-[var(--radius-card)] border border-border bg-white shadow-md",
             panelShown && "is-open",
           )}
         >
-          <header className="flex items-start justify-between gap-3 border-b border-border bg-surface px-4 py-3">
+          <header className="chat-panel-header flex items-start justify-between gap-3 border-b border-border bg-surface px-4 py-3">
             <div>
               <h2 id={titleId} className="text-sm font-semibold text-foreground">
                 AlliancePay assistant
@@ -243,10 +274,10 @@ export function ChatWidget() {
             </div>
           </header>
 
-          <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4" data-lenis-prevent>
+          <div className="chat-panel-body min-h-0 flex-1 space-y-3 overflow-y-auto px-4 py-4" data-lenis-prevent>
             {messages.length === 0 ? (
               <div className="space-y-3">
-                <p className="text-sm leading-6 text-muted">
+                <p className="chat-intro text-sm leading-6 text-muted">
                   Ask about checkout, inventory, industries, or how to talk with the team. Pricing amounts are not published yet.
                 </p>
                 <ul className="space-y-2">
@@ -270,14 +301,19 @@ export function ChatWidget() {
                   className={cn(
                     "chat-message-in max-w-[90%] rounded-2xl px-3 py-2 text-sm leading-6 whitespace-pre-wrap",
                     message.role === "user"
-                      ? "ml-auto bg-primary text-white"
-                      : "bg-surface text-foreground",
+                      ? "chat-message-user ml-auto bg-primary text-white"
+                      : "chat-message-assistant bg-surface text-foreground",
                   )}
                 >
                   {message.role === "assistant" && message.content.length === 0 && pending ? (
                     <TypingIndicator />
                   ) : message.role === "assistant" ? (
-                    <MessageText text={message.content} />
+                    <>
+                      <MessageText text={message.content} />
+                      {pending && index === messages.length - 1 ? (
+                        <span className="chat-caret" aria-hidden />
+                      ) : null}
+                    </>
                   ) : (
                     message.content
                   )}
@@ -292,7 +328,7 @@ export function ChatWidget() {
             <div ref={bottomRef} />
           </div>
 
-          <form onSubmit={onSubmit} className="border-t border-border p-3">
+          <form onSubmit={onSubmit} className="chat-panel-form border-t border-border p-3">
             <label htmlFor={`${panelId}-input`} className="sr-only">
               Message
             </label>
@@ -316,7 +352,7 @@ export function ChatWidget() {
               />
               <button
                 type="submit"
-                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-gradient text-white disabled:opacity-50"
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-gradient text-white transition-transform motion-safe:active:scale-95 disabled:opacity-50"
                 aria-label="Send message"
                 disabled={pending || draft.trim().length === 0}
               >
@@ -330,22 +366,59 @@ export function ChatWidget() {
         </section>
       ) : null}
 
-      <button
-        ref={launcherRef}
-        type="button"
-        className={cn(
-          "chat-launcher pointer-events-auto relative inline-flex items-center gap-2 rounded-full bg-brand-gradient px-4 py-3 text-sm font-semibold text-white shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
-          !open && "chat-launcher-idle",
-        )}
-        aria-expanded={open}
-        aria-controls={panelId}
-        onClick={() => setOpen((current) => !current)}
-      >
-        <MessageCircle className="h-5 w-5" aria-hidden />
-        <span key={open ? "close" : "ask"} className="chat-launcher-label">
-          {open ? "Close chat" : "Ask AlliancePay"}
-        </span>
-      </button>
+      <div className={cn("chat-launcher-anchor", !open && "is-idle")}>
+        <div className="chat-launcher-bob flex flex-col items-end gap-3">
+          {!open && teaser ? (
+            <div className="chat-teaser pointer-events-auto relative max-w-64 rounded-2xl border border-border bg-white px-3 py-2.5 pr-8 text-left shadow-md">
+              <button
+                type="button"
+                className="block text-left"
+                onClick={() => setOpen(true)}
+              >
+                <span className="block text-sm font-semibold text-foreground">
+                  Questions about your store?
+                </span>
+                <span className="mt-0.5 block text-xs leading-5 font-normal text-muted">
+                  Ask about checkout, inventory, or how to reach the team.
+                </span>
+              </button>
+              <button
+                type="button"
+                className="absolute top-1.5 right-1.5 rounded-md p-1 text-muted hover:bg-surface hover:text-foreground"
+                aria-label="Dismiss greeting"
+                onClick={() => {
+                  teaserDismissed.current = true;
+                  setTeaser(false);
+                }}
+              >
+                <X className="h-3.5 w-3.5" aria-hidden />
+              </button>
+              <span className="chat-teaser-tail" aria-hidden />
+            </div>
+          ) : null}
+
+          <button
+            ref={launcherRef}
+            type="button"
+            className="chat-launcher pointer-events-auto relative inline-flex items-center gap-2 rounded-full bg-brand-gradient px-4 py-3 text-sm font-semibold text-white shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+            aria-expanded={open}
+            aria-controls={panelId}
+            onClick={() => setOpen((current) => !current)}
+          >
+            <span className="relative grid h-5 w-5 place-items-center" aria-hidden>
+              <MessageCircle
+                className={cn("chat-glyph col-start-1 row-start-1 h-5 w-5", open && "is-hidden")}
+              />
+              <X
+                className={cn("chat-glyph col-start-1 row-start-1 h-5 w-5", !open && "is-hidden")}
+              />
+            </span>
+            <span key={open ? "close" : "ask"} className="chat-launcher-label">
+              {open ? "Close chat" : "Ask AlliancePay"}
+            </span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
