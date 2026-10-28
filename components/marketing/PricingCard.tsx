@@ -16,8 +16,8 @@ export function PricingCard({
   interval = "monthly",
   className,
 }: PricingCardProps) {
-  const price = formatPlanPrice(plan, interval);
-  const showPeriod = plan.monthlyPriceCents !== null || plan.annualPriceCents !== null;
+  const hasPrice = plan.monthlyPriceCents !== null || plan.annualPriceCents !== null;
+  const price = hasPrice ? formatPlanPrice(plan, interval) : null;
 
   return (
     <article
@@ -34,19 +34,16 @@ export function PricingCard({
       ) : null}
       <h3 className="text-gradient text-card">{plan.name}</h3>
       <p className="mt-2 text-sm text-muted">{plan.description}</p>
-      <div className="mt-6">
-        <p className="text-gradient text-stat">
-          {price}
-          {showPeriod ? (
+      {price ? (
+        <div className="mt-6">
+          <p className="text-gradient text-stat">
+            {price}
             <span className="text-base font-medium text-muted">
               /{interval === "annual" ? "yr" : "mo"}
             </span>
-          ) : null}
-        </p>
-        {!showPeriod ? (
-          <p className="mt-1 text-sm text-muted">Pricing available on request</p>
-        ) : null}
-      </div>
+          </p>
+        </div>
+      ) : null}
       <ul className="mt-6 flex-1 space-y-3">
         {plan.features.map((feature) => (
           <li key={feature.label} className="flex items-start gap-2 text-sm">
