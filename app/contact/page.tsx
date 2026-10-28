@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, HelpCircle, Mail } from "lucide-react";
+import { ArrowRight, HelpCircle, Mail, Phone } from "lucide-react";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { CTABanner } from "@/components/marketing/CTABanner";
 import { PageHero } from "@/components/marketing/PageHero";
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 
 const channelIcons = {
   email: Mail,
+  phone: Phone,
   faq: HelpCircle,
 } as const;
 
@@ -89,10 +90,6 @@ export default function ContactPage() {
                 );
               })}
             </ul>
-
-            <p className="mt-6 text-sm leading-6 text-muted">
-              {contactContent.note}
-            </p>
           </ScrollReveal>
 
           <ScrollReveal variant="up" delay={120}>
@@ -110,47 +107,6 @@ export default function ContactPage() {
               />
             </div>
           </ScrollReveal>
-        </Container>
-      </section>
-
-      <section
-        className="border-y border-border bg-surface py-14 sm:py-16"
-        aria-labelledby="contact-next-steps"
-      >
-        <Container>
-          <SectionHeading
-            id="contact-next-steps"
-            eyebrow="Explore"
-            title={contactContent.nextStepsTitle}
-            description="If you are still evaluating AlliancePay, these pages cover plans and company context."
-            className="mb-8"
-          />
-          <div className="grid gap-4 sm:grid-cols-2">
-            {contactContent.nextSteps.map((step, index) => (
-              <ScrollReveal key={step.href} variant="up" delay={index * 70}>
-                <Link
-                  href={step.href}
-                  className={cn(
-                    "group flex h-full flex-col rounded-[var(--radius-card)] border border-border bg-white p-5 shadow-sm transition",
-                    "hover:border-primary/30 hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
-                  )}
-                >
-                  <span className="flex items-center justify-between gap-3">
-                    <span className="font-semibold text-foreground">
-                      {step.title}
-                    </span>
-                    <ArrowRight
-                      className="h-4 w-4 shrink-0 text-muted transition group-hover:translate-x-0.5 group-hover:text-primary"
-                      aria-hidden
-                    />
-                  </span>
-                  <span className="mt-2 text-sm leading-6 text-muted">
-                    {step.description}
-                  </span>
-                </Link>
-              </ScrollReveal>
-            ))}
-          </div>
         </Container>
       </section>
 

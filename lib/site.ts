@@ -5,6 +5,10 @@ export const siteConfig = {
     "The complete POS system for retail stores. Manage sales, inventory, employees, and customers in one platform built for independent retailers.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://alliancepay.com",
   supportEmail: "arif1@att.net",
+  /** Display form of the public support line. */
+  supportPhone: "(555) 010-0199",
+  /** Digits for the tel: link. */
+  supportPhoneTel: "+15550100199",
   /** Static for prerender compatibility with Next.js Cache Components. */
   copyrightYear: 2026,
   social: {

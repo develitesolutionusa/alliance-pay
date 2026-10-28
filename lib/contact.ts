@@ -4,13 +4,13 @@ export const contactContent = {
   eyebrow: "Contact",
   title: "Talk with AlliancePay",
   description:
-    "Questions about POS, pricing, hardware, or a store rollout — send a message or email us directly. We review every inquiry.",
+    "Questions about POS, pricing, hardware, or a store rollout — send a message, call, or email us directly. We review every inquiry.",
   formTitle: "Send a message",
   formDescription:
     "Tell us about your store and what you need. Submissions are validated and rate-limited; we follow up from our team inbox.",
   channelsTitle: "Reach us directly",
   channelsDescription:
-    "Prefer email? Use the options below — we do not publish unverified phone lines or support hours.",
+    "Call or email the team. We review every inquiry and do not publish unverified support hours.",
   channels: [
     {
       id: "email",
@@ -21,6 +21,14 @@ export const contactContent = {
       actionLabel: "Compose email",
     },
     {
+      id: "phone",
+      title: "Phone",
+      description: siteConfig.supportPhone,
+      href: `tel:${siteConfig.supportPhoneTel}`,
+      external: true,
+      actionLabel: "Call now",
+    },
+    {
       id: "faq",
       title: "Browse FAQ",
       description: "Quick answers on pricing status, industries, hardware, and forms.",
@@ -29,18 +37,4 @@ export const contactContent = {
       actionLabel: "View FAQ",
     },
   ],
-  nextStepsTitle: "Other useful paths",
-  nextSteps: [
-    {
-      title: "Pricing overview",
-      description: "See plan structure while commercial amounts stay pending approval.",
-      href: "/pricing",
-    },
-    {
-      title: "About AlliancePay",
-      description: "Mission and principles — no invented customer counts or logos.",
-      href: "/about",
-    },
-  ],
-  note: "Response times will be published with support policy. Until then, expect a human follow-up — not an automated claim of 24/7 coverage.",
 } as const;
